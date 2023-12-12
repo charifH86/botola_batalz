@@ -16,6 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_163040) do
 
   create_table "games", force: :cascade do |t|
     t.string "score"
+    t.integer "localteam_id"
+    t.integer "visitorteam_id"
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,6 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_163040) do
   end
 
   add_foreign_key "games", "leagues"
+  add_foreign_key "games", "teams", column: "localteam_id"
+  add_foreign_key "games", "teams", column: "visitorteam_id"
   add_foreign_key "leagues", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "teams", "leagues"
