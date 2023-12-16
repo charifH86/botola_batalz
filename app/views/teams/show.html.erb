@@ -1,2 +1,18 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<h1>Pick your players !</h1>
+<p>Find in the following list the players you need to win the league !</p>
+
+<div class="card-container">
+  <% @players.each do |player| %>
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <img src='<%= player.image_url %>' class="card-img-top scene" alt="moroccan professional player">
+        <div class="card-body">
+          <h5 class="card-title"><%= player.first_name %> </h5>
+          <h6 class="card-subtitle mb-2 text-muted">Price: <%= player.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
+          <a href="" class="card-link">Buy this player</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
