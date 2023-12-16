@@ -10,19 +10,19 @@ teams = [{id:6603, name:'Wydad Athletic Club'}, {id:2068, name:'Raja Athletic Cl
   {id:22941, name: 'Mouloudia Oujda'}, {id:22944, name: 'Olympique Safi'},
 ]
 teams.each do |team|
-url = "https://transfermarkt-api.vercel.app/clubs/#{team[:id]}/players"
-p url
-response = RestClient.get(url)
-team_array = JSON.parse(response)
+      url = "https://transfermarkt-api.vercel.app/clubs/#{team[:id]}/players"
+      p url
+      response = RestClient.get(url)
+      team_array = JSON.parse(response)
 
-team_array["players"].each do |m|
-
-Player.create!(first_name: m['name'],
-  last_name: m['name'],
-  price: m['marketValue'],
-  position: m['position'],
-  nationality: m['nationality'][0],
-  height: m['height'],
-  current_team: team[:name])
-end
+      team_array["players"].each do |m|
+        Player.create!(first_name: m['name'],
+          last_name: m['name'],
+          price: m['marketValue'],
+          position: m['position'],
+          nationality: m['nationality'][0],
+          height: m['height'],
+          current_team: team[:name]
+        )
+      end
 end
