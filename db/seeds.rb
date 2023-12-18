@@ -11,67 +11,67 @@ Team.create(name: 'Rapid Casa', league_id: League.first.id)
 
 teams = [
   {
-    id: "6603",
+    id: 6603,
     name: "Wydad Casablanca"
   },
   {
-    id: "2068",
+    id: 2068,
     name: "Raja Club Athletic"
   },
   {
-    id: "9099",
+    id: 9099,
     name: "FAR Rabat"
   },
   {
-    id: "37176",
+    id: 37176,
     name: "Renaissance de Berkane"
   },
   {
-    id: "6371",
+    id: 6371,
     name: "FUS Rabat"
   },
   {
-    id: "3282",
+    id: 3282,
     name: "MAS Fes"
   },
   {
-    id: "12721",
+    id: 12721,
     name: "Ittihad Tanger"
   },
   {
-    id: "22944",
+    id: 22944,
     name: "Olympique Safi"
   },
   {
-    id: "22935",
+    id: 22935,
     name: "Hassania d'Agadir"
   },
   {
-    id: "79389",
+    id: 79389,
     name: "Union Touarga Sportif"
   },
   {
-    id: "9100",
+    id: 9100,
     name: "Moghreb Tétouan"
   },
   {
-    id: "37415",
+    id: 37415,
     name: "Club Athletic Youssoufia Berrechid"
   },
   {
-    id: "2073",
+    id: 2073,
     name: "SC Chabab Mohammedia"
   },
   {
-    id: "74953",
+    id: 74953,
     name: "Renaissance Zemamra"
   },
   {
-    id: "79390",
+    id: 79390,
     name: "Jeunesse Sportive de Soualem"
   },
   {
-    id: "22941",
+    id: 22941,
     name: "Mouloudia d'Oujda"
   }
 ]
@@ -89,14 +89,6 @@ Player.create!(first_name: player['name'],
   position: player['position'],
   nationality: player['nationality'][0],
   height: player['height'],
-  current_team: team[:name],
-  image_url: player['id'])
+  current_team: team[:name])
 end
-end
-
-Player.all.each do |player|
-profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/#{player.image_url}/profile")
-profile = JSON.parse(profile_response)
-p profile 
-Player.update(image_url: profile['imageURL'])
 end

@@ -12,6 +12,10 @@
   margin: 0 auto;
 }
 
+.card-img-top {
+  width: 286px;
+  height: 200px;
+}
 .card {
   margin: 16px;
   padding: 0px;
@@ -27,4 +31,10 @@
 .d-flex {
   background-color: white;
   box-shadow: 4px 4px 10px grey;
+}
+
+.btn {
+  background-color: 1C7C54;
+  color: white;
+  text-shadow:2ch
 }
