@@ -1,19 +1,22 @@
+<div class="super-container">
+<div class="left-container">
 <h1>Pick your players !</h1>
 <p>Find in the following list the players you need to win the league !</p>
 
 <%= form_with url: team_path, method: :get, local: true do |form| %>
-  <%= form.text_field :first_name, placeholder: "Type the player's name" %>
-  <%= form.text_field :current_team, placeholder: "Current team" %>
-  <%= form.number_field :min_price, placeholder: "Min price" %>
-  <%= form.number_field :max_price, placeholder: "Max price" %>
+  <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
+  <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team" %>
+  <%= form.text_field :position, value:params["position"], placeholder: "Chose his position" %>
+  <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price" %>
+  <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price" %>
   <%= form.submit "Search" %>
 <% end %>
 
 <div class="card-container">
   <% @players.each do |player| %>
     <div class="row">
-      <div class="card" style="width: 18rem;">
-        <% random_image = "Mo_salah2.png" %> <img src="<%= image_url(random_image) %>" class="card-img-top scene" alt="moroccan professional player">
+      <div class="card" style="width: 15rem;">
+        <img src="<%= player.image_url %>" class="card-img-top scene" alt="moroccan professional player">
         <div class="card-body">
           <h5 class="card-title"><%= player.first_name %> </h5>
           <h6 class="card-subtitle mb-2 text-muted">Price: <%= player.price %></h6>
@@ -24,4 +27,8 @@
       </div>
     </div>
   <% end %>
+</div>
+</div>
+<div class="right-container">
+</div>
 </div>

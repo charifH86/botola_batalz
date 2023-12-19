@@ -4,11 +4,11 @@ class TeamsController < ApplicationController
     @players = Player.all
 
     if params[:first_name].present?
-      @players = @players.where("first_name iLIKE ?", "%#{params[:first_name]}%")
+      @players = @players.where("first_name ILIKE ?", "%#{params[:first_name]}%")
     end
 
     if params[:current_team].present?
-      @players = @players.where("current_team iLIKE ?", "%#{params[:current_team]}%")
+      @players = @players.where("current_team ILIKE ?", "%#{params[:current_team]}%")
     end
 
     if params[:min_price].present?
@@ -51,4 +51,3 @@ class TeamsController < ApplicationController
     end
   end
 end
-
