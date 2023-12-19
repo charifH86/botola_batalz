@@ -1,13 +1,79 @@
 require "rest-client"
+Team.destroy_all
+League.destroy_all
+User.destroy_all
 Player.destroy_all
-teams = [{id:6603, name:'Wydad Athletic Club'}, {id:2068, name:'Raja Athletic Club'},
-  {id:9099, name: 'FAR Rabat'}, {id:37176, name: 'Berkane'},
-  {id:2073, name: 'Chabab Mohamedia'}, {id:79389, name: 'Union Touarga'},
-  {id:6371, name: 'FUS Rabat'}, {id:74953, name: 'Renaissance Zemamra'},
-  {id:22935, name: 'HUSA'}, {id:12721, name: 'Ittihad Tanger'},
-  {id:79390, name: 'JS Soualem'}, {id:3282, name: 'Maghreb Fes'},
-  {id:9100, name: 'Maghreb Tetouan'}, {id:37415, name: 'Youssoufia Berrechid'},
-  {id:22941, name: 'Mouloudia Oujda'}, {id:22944, name: 'Olympique Safi'},
+
+User.create(email: 'user1@gmail.com', password: '123456')
+
+League.create(name: 'botola pro', budget: 1000000, user_id: User.first.id)
+Team.create(name: 'Rapid Casa', league_id: League.first.id)
+
+teams = [
+  {
+    id: 6603,
+    name: "Wydad Casablanca"
+  },
+  {
+    id: 2068,
+    name: "Raja Club Athletic"
+  },
+  {
+    id: 9099,
+    name: "FAR Rabat"
+  },
+  {
+    id: 37176,
+    name: "Renaissance de Berkane"
+  },
+  {
+    id: 6371,
+    name: "FUS Rabat"
+  },
+  {
+    id: 3282,
+    name: "MAS Fes"
+  },
+  {
+    id: 12721,
+    name: "Ittihad Tanger"
+  },
+  {
+    id: 22944,
+    name: "Olympique Safi"
+  },
+  {
+    id: 22935,
+    name: "Hassania d'Agadir"
+  },
+  {
+    id: 79389,
+    name: "Union Touarga Sportif"
+  },
+  {
+    id: 9100,
+    name: "Moghreb Tétouan"
+  },
+  {
+    id: 37415,
+    name: "Club Athletic Youssoufia Berrechid"
+  },
+  {
+    id: 2073,
+    name: "SC Chabab Mohammedia"
+  },
+  {
+    id: 74953,
+    name: "Renaissance Zemamra"
+  },
+  {
+    id: 79390,
+    name: "Jeunesse Sportive de Soualem"
+  },
+  {
+    id: 22941,
+    name: "Mouloudia d'Oujda"
+  }
 ]
 teams.each do |team|
 url = "https://transfermarkt-api.vercel.app/clubs/#{team[:id]}/players"
@@ -15,14 +81,14 @@ p url
 response = RestClient.get(url)
 team_array = JSON.parse(response)
 
-team_array["players"].each do |m|
+team_array["players"].each do |player|
 
-Player.create!(first_name: m['name'],
-  last_name: m['name'],
-  price: m['marketValue'],
-  position: m['position'],
-  nationality: m['nationality'][0],
-  height: m['height'],
+Player.create!(first_name: player['name'],
+  last_name: player['name'],
+  price: player['marketValue'],
+  position: player['position'],
+  nationality: player['nationality'][0],
+  height: player['height'],
   current_team: team[:name])
 end
 end

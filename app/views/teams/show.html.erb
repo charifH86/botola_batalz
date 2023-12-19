@@ -1,2 +1,25 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<h1>Pick your players !</h1>
+<p>Find in the following list the players you need to win the league !</p>
+
+<%= form_with url: team_path, method: :get, local: true do |form| %>
+  <%= form.text_field :first_name, placeholder: "Type the player's name" %>
+  <%= form.text_field :current_team, placeholder: "Current team" %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<div class="card-container">
+  <% @players.each do |player| %>
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <% random_image = "Mo_salah2.png" %> <img src="<%= image_url(random_image) %>" class="card-img-top scene" alt="moroccan professional player">
+        <div class="card-body">
+          <h5 class="card-title"><%= player.first_name %> </h5>
+          <h6 class="card-subtitle mb-2 text-muted">Price: <%= player.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
+          <button type="button" class="btn btn-success"> Buy this player !</button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
