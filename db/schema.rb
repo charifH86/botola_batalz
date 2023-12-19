@@ -37,11 +37,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_112143) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "price"
+    t.integer "price"
     t.string "height"
     t.string "nationality"
     t.string "position"
     t.string "current_team"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
