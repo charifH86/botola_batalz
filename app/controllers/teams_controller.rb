@@ -36,4 +36,19 @@ class TeamsController < ApplicationController
 
   def delete
   end
+
+  private
+
+  def convert_value_to_integer(value_string)
+    return 0 unless value_string.is_a?(String) && value_string.match?(/\d/)
+
+    if value_string.include?('m')
+      (value_string.gsub(/[€m]/, '').to_f * 1_000_000).to_i
+    elsif value_string.include?('k')
+      (value_string.gsub(/[€k]/, '').to_f * 1_000).to_i
+    else
+      value_string.gsub('€', '').to_i
+    end
+  end
 end
+

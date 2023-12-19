@@ -6,7 +6,7 @@ Player.destroy_all
 
 User.create(email: 'user1@gmail.com', password: '123456')
 
-League.create(name: 'botola pro', budget: 1000000, user_id: User.first.id)
+League.create(name: 'botola pro', budget: 5000000, user_id: User.first.id)
 Team.create(name: 'Rapid Casa', league_id: League.first.id)
 
 teams = [
@@ -77,12 +77,12 @@ teams = [
 ]
 
   def convert_value_to_integer(value_string)
-    return 0 unless value_string.is_a?(String) && !value_string.empty?
+    return 0 unless value_string.is_a?(String) && value_string.match?(/\d/)
 
     if value_string.include?('m')
-      (value_string.gsub('€', '').gsub('m', '').to_f * 1_000_000).to_i
+      (value_string.gsub(/[€m]/, '').to_f * 1_000_000).to_i
     elsif value_string.include?('k')
-      (value_string.gsub('€', '').gsub('k', '').to_f * 1_000).to_i
+      (value_string.gsub(/[€k]/, '').to_f * 1_000).to_i
     else
       value_string.gsub('€', '').to_i
     end
@@ -98,7 +98,7 @@ team_array["players"].each do |player|
 
 Player.create!(first_name: player['name'],
   last_name: player['name'],
-  price: player['marketValue'],
+  price: convert_value_to_integer(player['marketValue']),
   position: player['position'],
   nationality: player['nationality'][0],
   height: player['height'],
