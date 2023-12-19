@@ -1,2 +1,16 @@
 <h1>Teams#new</h1>
 <p>Find me in app/views/teams/new.html.erb</p>
+
+<%= image_tag "createT.png", class:"back-img"%>
+  <div class="cl">
+    <h1>CREATE YOUR TEAM !</h1>
+  </div>
+
+  <div class = "link-form">
+    <%= simple_form_for(@team) do |f| %>
+    <%= f.input :name,label: false %>
+    <%= f.input :pickanimage,label: false %>
+    <%= f.submit "OK",class:"submit_league" %>
+  <% end %>
+  </div>
+  
