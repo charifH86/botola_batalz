@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @league = League.find(params[:league_id])
     @team = Team.new
   end
 
