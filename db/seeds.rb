@@ -75,6 +75,19 @@ teams = [
     name: "Mouloudia d'Oujda"
   }
 ]
+
+  def convert_value_to_integer(value_string)
+    return 0 unless value_string.is_a?(String) && !value_string.empty?
+
+    if value_string.include?('m')
+      (value_string.gsub('€', '').gsub('m', '').to_f * 1_000_000).to_i
+    elsif value_string.include?('k')
+      (value_string.gsub('€', '').gsub('k', '').to_f * 1_000).to_i
+    else
+      value_string.gsub('€', '').to_i
+    end
+  end
+
 teams.each do |team|
 url = "https://transfermarkt-api.vercel.app/clubs/#{team[:id]}/players"
 p url

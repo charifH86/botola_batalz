@@ -4,6 +4,8 @@
 <%= form_with url: team_path, method: :get, local: true do |form| %>
   <%= form.text_field :first_name, placeholder: "Type the player's name" %>
   <%= form.text_field :current_team, placeholder: "Current team" %>
+  <%= form.number_field :min_price, placeholder: "Min price" %>
+  <%= form.number_field :max_price, placeholder: "Max price" %>
   <%= form.submit "Search" %>
 <% end %>
 

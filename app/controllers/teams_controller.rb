@@ -10,6 +10,16 @@ class TeamsController < ApplicationController
     if params[:current_team].present?
       @players = @players.where("current_team iLIKE ?", "%#{params[:current_team]}%")
     end
+
+    if params[:min_price].present?
+      min_price = convert_value_to_integer(params[:min_price])
+      @players = @players.where("price >= ?", min_price)
+    end
+
+    if params[:max_price].present?
+      max_price = convert_value_to_integer(params[:max_price])
+      @players = @players.where("price <= ?", max_price)
+    end
   end
 
   def create
