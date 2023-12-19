@@ -1,0 +1,32 @@
+.back-img {
+  position: absolute;
+  width: 80%;
+  max-width: 800px;
+  z-index: -1;
+}
+.cl{
+  width:100vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:80px;
+  font-weight: 100px;
+  background-color: rgba(255, 255, 255, 0.836);
+  color: $secondary;
+  z-index: 3;
+  text-align: center;
+  flex :display;
+  margin-top: 115px;
+  h1 {
+    padding: 20px;
+  }
+  
+}
+
+.link-form{
+  width:45vw;
+  margin: 0 auto;
+}
+.submit_league{
+  background-color: $primary;
+  float:right;
+  margin-top:180px;
+}
