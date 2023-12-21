@@ -23,6 +23,12 @@ class TeamsController < ApplicationController
   end
 
   def create
+    @team = Team.new(team_params)
+    @team.league_id = params[:league_id]
+    @team.valo = 10000000
+    if @team.save! 
+      redirect_to league_path(@team.league.id)
+    end
   end
 
   def new
@@ -51,5 +57,8 @@ class TeamsController < ApplicationController
     else
       value_string.gsub('€', '').to_i
     end
+  end
+  def team_params
+    params.require(:team).permit(:name)
   end
 end
