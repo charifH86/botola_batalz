@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @team.league_id = params[:league_id]
     @team.valo = 10000000
     if @team.save! 
-      redirect_to league_path(@team.league.id)
+      redirect_to team_path(@team)
     end
   end
 
@@ -59,6 +59,6 @@ class TeamsController < ApplicationController
     end
   end
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name,:photo)
   end
 end

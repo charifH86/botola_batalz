@@ -7,6 +7,7 @@
   <div class = "link-form">
     <%= simple_form_for([@league,@team]) do |f| %>
     <%= f.input :name,label: false %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "OK",class:"submit_league" %>
   <% end %>
   </div>
