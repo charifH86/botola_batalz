@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :games, only: :index
   end
   resources :teams, only: [:show, :update, :delete]
-  #resources :users
+
+
 
   devise_for :users
   root to: "pages#home"
