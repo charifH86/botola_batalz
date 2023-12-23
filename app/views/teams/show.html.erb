@@ -2,6 +2,7 @@
 <div class="left-container">
 <h1>Pick your players !</h1>
 <p>Find in the following list the players you need to win the league !</p>
+<%= cl_image_tag @team.photo.key, height: 300, width: 400, crop: :fill %>
 
 <%= form_with url: team_path, method: :get, local: true do |form| %>
   <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
