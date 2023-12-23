@@ -22,7 +22,11 @@
           <h6 class="card-subtitle mb-2 text-muted">Price: <%= player.price %></h6>
           <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
           <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
-          <button type="button" class="btn btn-success"> Buy this player !</button>
+          <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}?player_id=#{player.id}" %>'>
+            <button type="submit" class="btn btn-success btn-buy-player">
+              Buy this player!
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -30,5 +34,17 @@
 </div>
 </div>
 <div class="right-container">
+<h4>Here is your shopping list !</h4>
+<h6> <%= number_to_currency(@league.budget, unit: '€', precision: 0) %> </h6>
+<h6> You have selected <%= @team.team_players.count %> players </h6>
+<% @team.team_players.each do |t_player| %>
+<br/>
+<%= t_player.player.first_name%>
+<form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
+            <button type="submit" class="btn btn-danger btn-buy-player">
+              Delete
+            </button>
+          </form>
+<% end %>
 </div>
 </div>

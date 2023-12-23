@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   resources :leagues do
-    resources :teams, only: [:create, :new]
+    resources :teams, only: [:create, :new, :update]
+    member do
+      post 'update'
+    end
     resources :games, only: :index
   end
   resources :teams, only: [:show, :update, :delete]
+  patch "/removefromteam/:id", to: "teams#remove_player"
   #resources :users
 
   devise_for :users
