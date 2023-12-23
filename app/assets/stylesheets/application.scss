@@ -10,3 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "leagues/new";
+
+body {
+background-color: lightgrey;
+}
+@import "teams/index";

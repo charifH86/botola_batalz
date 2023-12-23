@@ -1,2 +1,15 @@
-<h1>Leagues#new</h1>
-<p>Find me in app/views/leagues/new.html.erb</p>
+
+
+  <%= image_tag "createL.png", class:"back-img"%>
+  <div class="cl">
+    <h1>CREATE YOUR LEAGUE !</h1>
+  </div>
+
+  <div class = "link-form">
+    <%= simple_form_for(@league) do |f| %>
+    <%= f.input :name,label: false %>
+    <%= f.submit "OK",class:"submit_league" %>
+  <% end %>
+  </div>
+  
+
