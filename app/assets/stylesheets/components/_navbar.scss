@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +10,29 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+ul.my-nav{
+display:flex;
+justify-content: space-around;
+width:80%;
+li{
+  font-weight:700;
+  transition: all 0.4s ease-in-out;
+  border-bottom: 2px solid $primary;
+  &:hover{
+    color: $primary !important;
+    border-bottom: 3px solid $secondary;
+    border-top: 3px solid $secondary;
+    //.nav-link{}
+    transform: rotate(3deg) scale(1.1);
+  }
+}
+}
+ul.my-nav2{
+  display:flex;
+  justify-content: end;
+  width:20%;
+  }
+#navbarSupportedContent{
+  width:100%;
 }

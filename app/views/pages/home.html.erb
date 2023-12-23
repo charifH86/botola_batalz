@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class='imageback' style='background-image:linear-gradient(90deg, rgba(255,71,71,0.02) 0%, rgba(0,0,0,0.5) 35%, rgba(255,71,71,0.02) 100%),url(<%=image_path "image1.png"%>)'>
+  <h1 class='title'> BOTOLA BATALZ </h1>
+
+  <p class='paragraph'>
+    Play With you friends,
+    <span class='win'>win</span>
+    or
+    <span class='win'>lose</span>
+    <br>
+    but
+    <span class='win'>always have a fun</span>
+  </p>
+
+  <div class="btn-container">
+    <a class='redbutton'href="<%=new_user_session_path%>">Log In</a>
+    <a class='redbutton' href="<%=new_user_registration_path%>">Sign Up</a>
+  </div>
+</div>
+
+ <footer>
+    <p><span class='title'>HOW DOES IT WORK </span><span class='small-text'>(join a league, build your team, have fun  !)</span></p>
+  </footer>

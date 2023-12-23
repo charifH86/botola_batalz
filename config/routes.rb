@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :teams, only: [:show, :update, :delete]
   patch "/removefromteam/:id", to: "teams#remove_player"
-  #resources :users
+
 
   devise_for :users
   root to: "pages#home"
