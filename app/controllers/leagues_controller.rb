@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
 
   def new
     @league = League.new
+    @leagues = League.where(user:current_user)
   end
 
   def update

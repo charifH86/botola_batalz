@@ -4,12 +4,25 @@
   <div class="cl">
     <h1>CREATE YOUR LEAGUE !</h1>
   </div>
-
   <div class = "link-form">
     <%= simple_form_for(@league) do |f| %>
     <%= f.input :name,label: false %>
     <%= f.submit "OK",class:"submit_league" %>
   <% end %>
   </div>
-  
-
+  <div class = "mcontainer">
+  <div class ="scontainer">
+  </div>
+  <div class="tcontainer">
+  <ul class = "link_info">
+    <% @leagues.each do |league| %>
+      <li>
+        <%= league.name %>
+        <%= link_to "Add Team",new_league_team_path(league) unless league.teams.where(user:current_user).first  %>
+        <%= league.teams.where(user:current_user).first.name if league.teams.where(user:current_user).first  %>
+        <%= link_to "show team",team_path(league.teams.where(user:current_user).first.id) if league.teams.where(user:current_user).first %>
+      </li>
+    <% end %>  
+  </ul>
+  </div>
+  </div>
