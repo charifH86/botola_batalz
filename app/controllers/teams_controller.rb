@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.league_id = params[:league_id]
     @team.valo = 10000000
+    @team.user = current_user
     if @team.save! 
       redirect_to team_path(@team)
     end
