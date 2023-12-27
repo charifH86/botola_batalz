@@ -1,7 +1,7 @@
 <div class="super-container">
 <div class="left-container">
 <h1>Pick your players !</h1>
-<p>Find in the following list the players you need to win the league !</p>
+<p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
 <%= cl_image_tag @team.photo.key, height: 300, width: 400, crop: :fill %>
 
 <%= form_with url: team_path, method: :get, local: true do |form| %>
@@ -20,7 +20,7 @@
         <img src="<%= player.image_url %>" class="card-img-top scene" alt="moroccan professional player">
         <div class="card-body">
           <h5 class="card-title"><%= player.first_name %> </h5>
-          <h6 class="card-subtitle mb-2 text-muted">Price: <%= player.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency(player.price, unit: '€', precision: 0) %></h6>
           <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
           <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
           <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}?player_id=#{player.id}" %>'>
@@ -35,17 +35,37 @@
 </div>
 </div>
 <div class="right-container">
-<h4>Here is your shopping list !</h4>
-<h6> <%= number_to_currency(@league.budget, unit: '€', precision: 0) %> </h6>
-<h6> You have selected <%= @team.team_players.count %> players </h6>
-<% @team.team_players.each do |t_player| %>
-<br/>
-<%= t_player.player.first_name%>
-<form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
-            <button type="submit" class="btn btn-danger btn-buy-player">
-              Delete
-            </button>
-          </form>
-<% end %>
+  <div class="shopinfo">
+    <h4> My shopping list !</h4>
+      <h6> Budget: <%= number_to_currency(@team.budget, unit: '€', precision: 0) %> </h6>
+      <h6> You have selected <%= @team.team_players.count %> players </h6>
+  </div>
+    <div class="shopdetails">
+      <% @team.team_players.each do |t_player| %>
+      <br/>
+      <%= t_player.player.first_name.split.last%>
+      <form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
+                  <button type="submit" class="btn btn-danger">
+                    Delete
+                  </button>
+                </form>
+      <% end %>
+      <h6> Your team is valuated at <%= number_to_currency(@team.valo, unit: '€', precision: 0) %> </h6>
+    </div>
+    <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}" %>'>
+                  <button type="button" class="btn btn-success btn-buy-player"
+                    data-controller="sweetalert"
+                    data-action="click->sweetalert#initSweetalert"
+                    data-sweetalert-title-value="Are you sure ?"
+                    data-sweetalert-icon-value="question"
+                    data-sweetalert-html-value="Voulez vous valider l'équipe selectionnée ?"
+                    data-sweetalert-confirm-button-text-value="OK"
+                    data-sweetalert-show-cancel-button-value="true"
+                    data-sweetalert-cancel-button-text-value="NO"
+                    data-turbo="false"
+                    >
+                    Validate
+                  </button>
+                </form>
 </div>
 </div>
