@@ -2,7 +2,12 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @league = @team.league
-    @players = Player.all
+    formerly_selected_players = TeamPlayer.where('team_id IN (?)', @league.teams.pluck(:id)).pluck(:player_id)
+    if formerly_selected_players.blank?
+      @players = Player.all
+    else
+      @players = Player.where('id NOT IN (?)', formerly_selected_players)
+    end
 
     if params[:first_name].present?
       @players = @players.where("first_name ILIKE ?", "%#{params[:first_name]}%")
@@ -26,8 +31,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.league_id = params[:league_id]
-    @team.valo = 10000000
-    if @team.save! 
+    if @team.save!
       redirect_to team_path(@team)
     end
   end
@@ -39,23 +43,21 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @league = @team.league
-
 
 
     if params[:player_id].present?
       player = Player.find(params[:player_id])
 
-      if @league.budget >= player.price
+      if @team.budget >= player.price
         @team_player = TeamPlayer.new(player_id: params[:player_id], team_id: @team.id)
         @team.valo = 0 if @team.valo.nil?
         @team.valo += player.price
-        @league.budget -= player.price
+        @team.budget -= player.price
 
-        if @team.save! && @league.save! && @team_player.save!
+        if @team.save! && @team_player.save!
           redirect_to team_path(@team.id)
         else
-          render json: { success: false, message: "Error saving team or league" }, status: :unprocessable_entity
+          render json: { success: false, message: "Error saving team" }, status: :unprocessable_entity
         end
       else
         render json: { success: false, message: "Sorry, this player is too expensive" }
