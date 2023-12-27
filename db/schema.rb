@@ -92,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
     t.datetime "updated_at", null: false
     t.integer "budget", default: 5000000
     t.index ["league_id"], name: "index_teams_on_league_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,4 +116,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
   add_foreign_key "team_players", "players"
   add_foreign_key "team_players", "teams"
   add_foreign_key "teams", "leagues"
+  add_foreign_key "teams", "users"
 end
