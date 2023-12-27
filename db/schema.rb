@@ -91,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "budget", default: 5000000
+    t.bigint "user_id", null: false
     t.index ["league_id"], name: "index_teams_on_league_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
