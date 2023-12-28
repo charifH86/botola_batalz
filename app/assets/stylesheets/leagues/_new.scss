@@ -59,11 +59,27 @@
     li{
       /* background-color: rgb(232, 232, 232); */
       padding: 12px 24px;
-      min-width: 240px;
+      min-width: 340px;
       /* border-radius: 8px ; */
       /* box-shadow: 5px 5px 12px grey; */
-      width:240px;
+      width:340px;
       margin:8px;
     }
+  }
+  .mybtn{
+    padding:8px 24px;
+    color: $primary;
+    text-decoration: none;
+    //border-bottom: 3px solid $primary;
+    transition: all 0.4s ease-in-out;
+    //border-bottom: 2px solid $primary;
+  &:hover{
+    color: $primary !important;
+    border-bottom: 3px solid $secondary;
+    /* border-top: 3px solid $secondary; */
+    //.nav-link{}
+    transform: rotate(3deg) scale(1.1);
+  }
+    
   }
 /* } */
