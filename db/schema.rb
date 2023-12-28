@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "price"
     t.string "height"
     t.string "nationality"
     t.string "position"
@@ -72,7 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
   end
 
   create_table "team_players", force: :cascade do |t|
@@ -90,8 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_184917) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "budget", default: 5000000
     t.bigint "user_id", null: false
+    t.integer "budget", default: 5000000
     t.index ["league_id"], name: "index_teams_on_league_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end

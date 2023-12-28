@@ -78,7 +78,6 @@
 //  font-size: small;
 //  font-family: $header-font;
 // }
-@import url(https://db.onlinewebfonts.com/c/86e19c032505783801ad44e79e814402?family=CountryFang+W00+Regular);
 .main-container{
   display:flex ;
   width: 100%;
@@ -118,6 +117,7 @@ background-color:$tertiary ;
   margin-left: 10px;
   margin-bottom:10%;
   font-weight: 900;
+  margin-left: 20px;
   }
 }
 .floating-img{
@@ -162,6 +162,13 @@ background-color:$tertiary ;
   margin-left:25% ;
   margin-right: 10px;
 }
+.justify-content-around {
+  justify-content: space-around !important;
+  margin-top: -100px;
+  margin-right: 195px;
+    margin-bottom: 195px;
+    margin-left: 195px;
+}
 
 
 .right-container{
@@ -177,20 +184,22 @@ background-color:$tertiary ;
   background-size: cover;
   background-repeat: no-repeat;
 }
+}
+
 .barre {
   background-color: #FFF;
   height: 10%;
   width: 100%;
 }
-}
+
 .bas{
   background-color: black;
-  height: 100px;
+  height: 500px;
   width: 100%;
 }
 
 .click-btn {
-  
+
   width: 120px;
   height: 40px;
   justify-content: center;
@@ -200,76 +209,162 @@ background-color:$tertiary ;
   border: 1px solid;
   border-radius: $border-radius;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   color: #000;
   text-decoration: none;
   transition: all 0.35s;
   box-sizing: border-box;
 }
-.btn-style701 {
-  $btn-color: $primary ;
-  $btn-hover-color: $tertiary;
-  $size: 8px;
-  $offset: 50%;
+
+// .btn-style701 {
+//   $btn-color: $primary ;
+//   $btn-hover-color: $tertiary;
+//   $size: 8px;
+//   $offset: 50%;
+//   position: relative;
+//   border: none;
+//   // border-color:$btn-color;
+//   color: $btn-color;
+//   span {
+//     width: 100%;
+//     display: block;
+//     position: relative;
+//   }
+//   &::before,
+//   &::after,
+//   span::before,
+//   span::after {
+//     width: $size;
+//     height: $size;
+//     position: absolute;
+//     transition: all 0.5s;
+//     border: 3px solid $btn-color;
+//     opacity: 0;
+//     content: "";
+//   }
+//   &::before {
+//     top: 0;
+//     left: 0;
+//     border-right: none;
+//     border-bottom: none;
+//     transform: translate(-$offset, -$offset);
+//   }
+//   &::after {
+//     bottom: 0;
+//     left: 0;
+//     border-right: none;
+//     border-top: none;
+//     transform: translate(-$offset, $offset);
+//   }
+//   span::before {
+//     top: 0;
+//     right: 0;
+//     border-left: none;
+//     border-bottom: none;
+//     transform: translate($offset, -$offset);
+//   }
+//   span::after {
+//     bottom: 0;
+//     right: 0;
+//     border-left: none;
+//     border-top: none;
+//     transform: translate($offset, $offset);
+//   }
+//   &:hover {
+//     font-size: 16.5px;
+//     color: $btn-hover-color;
+//     &::before,
+//     &::after,
+//     span::before,
+//     span::after {
+//       opacity: 1;
+//       border-color: $btn-hover-color;
+//       transform: translate(0%, 0%);
+//     }
+//   }
+// }
+// .btn-style702 {
+//   $btn-color: #ffffff;
+//   position: relative;
+//   // border-color: #dd141c;
+//   background-color: #dd141c;
+//   color: #fff;
+//   &::before,
+//   &::after {
+//     height: 100%;
+//     position: absolute;
+//     top: 0;
+//     transition: all 0.3s;
+//     content: "";
+//   }
+
+//   &::before {
+//     width: 100%;
+//     left: 0;
+//     border-radius: $border-radius;
+//     background-color: $btn-color;
+//     z-index: -1;
+//   }
+//   &::after {
+//     width: 0;
+//     left: 50%;
+//     // background-color:#FFF;
+
+//     border-top: 1px solid transparent;
+//     border-left: 1px solid transparent;
+//     border-right: 1px solid transparent;
+//     border-bottom: 1px solid transparent;
+//     transform: translate(-50%, 0);
+//     z-index: 1;
+//   }
+//   &:hover {
+//     color: $btn-color;
+//     &::before {
+//       transform: scale(0, 1);
+//     }
+//     &::after {
+//       width: 100%;
+//       border-color: $btn-color;
+//       transition-delay: 0.1s;
+//     }
+//   }
+// }
+.btn-style511 {
+  $btn-color: $primary;
+  $btn-hover-color: #dd141c;
   position: relative;
-  border: none;
-  // border-color:$btn-color;
-  color: $btn-color;
+  border-color: $btn-color;
+  background-color: $btn-color;
+  color: #484848;
+  overflow: hidden;
   span {
-    width: 100%;
-    display: block;
     position: relative;
+    z-index: 2;
   }
   &::before,
-  &::after,
-  span::before,
-  span::after {
-    width: $size;
-    height: $size;
+  &::after {
+    width: 100%;
+    height: 50%;
     position: absolute;
-    transition: all 0.5s;
-    border: 3px solid $btn-color;
-    opacity: 0;
+    left: 0;
+    background-color: $btn-hover-color;
+    transition: all 0.25s;
     content: "";
+    z-index: 1;
   }
   &::before {
     top: 0;
-    left: 0;
-    border-right: none;
-    border-bottom: none;
-    transform: translate(-$offset, -$offset);
+    transform: translate(-100%, 0);
   }
   &::after {
     bottom: 0;
-    left: 0;
-    border-right: none;
-    border-top: none;
-    transform: translate(-$offset, $offset);
-  }
-  span::before {
-    top: 0;
-    right: 0;
-    border-left: none;
-    border-bottom: none;
-    transform: translate($offset, -$offset);
-  }
-  span::after {
-    bottom: 0;
-    right: 0;
-    border-left: none;
-    border-top: none;
-    transform: translate($offset, $offset);
+    transform: translate(100%, 0);
   }
   &:hover {
-    font-size: 16.5px;
-    color: $btn-hover-color;
+    color: #fff;
     &::before,
-    &::after,
-    span::before,
-    span::after {
-      opacity: 1;
-      border-color: $btn-hover-color;
-      transform: translate(0%, 0%);
+    &::after {
+      transform: translate(0, 0);
     }
   }
 }

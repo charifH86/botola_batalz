@@ -98,7 +98,7 @@
 .card-img-top {
   object-fit: contain;
   margin: 14px;
-  display: flex;
+  // display: flex;
   width: 210px;
   height: 180px;
   border-radius: 5%;
@@ -112,6 +112,7 @@
   background-color: white;
   box-shadow: 4px 4px 10px grey;
 }
+
 
 .row {
   padding: 0px;
