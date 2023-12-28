@@ -56,6 +56,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "rest-client"
 gem "cloudinary"
+gem "rails_admin", "3.0"
 
 group :development, :test do
   gem "dotenv-rails"
@@ -79,3 +80,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "sassc-rails"
