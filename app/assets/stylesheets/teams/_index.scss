@@ -6,13 +6,92 @@
   .left-container {
     width: 80vw;
   }
-  .right-container {
-    width: 20vw;
-    height: 100vh;
-    position:fixed;
-    right: 0;
-    background-color: whitesmoke;
-  }
+/* General styling for the right container */
+.right-container {
+  img{margin:0 auto;
+      display:block;
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin-left: 10px;
+  position: fixed;
+  top: 118px;
+  right: 20px;
+  width: 300px;
+  height: 80vh;
+  overflow-y: auto;
+}
+
+/* Styling for the shop info section */
+.shopinfo {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.shopinfo h4 {
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.shopinfo h6 {
+  color: #555555;
+}
+
+/* Styling for the shop details section */
+.shopdetails {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.shopdetails h6 {
+  color: #555555;
+  margin-top: 20px;
+}
+
+.btn-buy-player {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 10px 0;
+}
+
+/* Style for delete button */
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-danger:hover {
+  background-color: white;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
 }
 
 .card-container {
