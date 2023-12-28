@@ -19,7 +19,6 @@ export default class extends Controller {
     event.preventDefault(); // Prevent the form to be submited after the submit button has been clicked
     console.log("Alert controller connected",this)
     const form = event.target.closest('form');
-
     Swal.fire({
       icon: this.iconValue,
       title: this.titleValue,

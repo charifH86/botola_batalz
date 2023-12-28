@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @league = @team.league
     formerly_selected_players = TeamPlayer.where('team_id IN (?)', @league.teams.pluck(:id)).pluck(:player_id)
-    @unique_positions = Player.pluck(:position).uniq
+    @unique_positions = Player.pluck(:poste).uniq
     if formerly_selected_players.blank?
       @players = Player.all
     else
@@ -27,15 +27,16 @@ class TeamsController < ApplicationController
       max_price = convert_value_to_integer(params[:max_price])
       @players = @players.where("price <= ?", max_price)
     end
-    
+
     if params[:position].present? && params[:position] != "Any"
-      @players = @players.where(position: params[:position])
+      @players = @players.where(poste: params[:position])
     end
   end
 
   def create
     @team = Team.new(team_params)
     @team.league_id = params[:league_id]
+    @team.user_id = current_user.id
     if @team.save!
       redirect_to team_path(@team)
     end
@@ -55,7 +56,7 @@ class TeamsController < ApplicationController
 
       if @team.budget >= player.price
         @team_player = TeamPlayer.new(player_id: params[:player_id], team_id: @team.id)
-        @team.valo = 0 if @team.valo.nil?
+        @team.valo = 0
         @team.valo += player.price
         @team.budget -= player.price
 

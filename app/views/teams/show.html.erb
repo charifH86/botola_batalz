@@ -2,7 +2,6 @@
 <div class="left-container">
 <h1>Pick your players !</h1>
 <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
-<%= cl_image_tag @team.photo.key, height: 300, width: 400, crop: :fill %>
 
 <%= form_with url: team_path, method: :get, local: true do |form| %>
   <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
@@ -36,6 +35,7 @@
 </div>
 </div>
 <div class="right-container">
+<%= image_tag "logo_update2.png"%>
   <div class="shopinfo">
     <h4> My shopping list !</h4>
       <h6> Budget: <%= number_to_currency(@team.budget, unit: '€', precision: 0) %> </h6>
