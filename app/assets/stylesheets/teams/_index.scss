@@ -105,7 +105,7 @@
 .card-img-top {
   object-fit: contain;
   margin: 14px;
-  display: flex;
+  // display: flex;
   width: 210px;
   height: 180px;
   border-radius: 5%;
@@ -120,14 +120,15 @@
   box-shadow: 4px 4px 10px grey;
 }
 
+
 .row {
   padding: 0px;
 }
 
-.d-flex {
-  background-color: white;
-  box-shadow: 4px 4px 10px grey;
-}
+// .d-flex {
+//   background-color: white;
+//   box-shadow: 4px 4px 10px grey;
+// }
 
 .btn {
   background-color: 1C7C54;
