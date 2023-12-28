@@ -82,7 +82,7 @@ class TeamsController < ApplicationController
   def remove_player
     t = TeamPlayer.find(params[:id])
     t.team.valo -= t.player.price
-    t.team.league.budget += t.player.price
+    t.team.budget += t.player.price
     if t.team.save! && t.team.league.save!
       t.destroy
       redirect_to team_path(t.team.id)

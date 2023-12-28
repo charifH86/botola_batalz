@@ -24,9 +24,25 @@
           <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
           <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
           <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}?player_id=#{player.id}" %>'>
-            <button type="submit" class="btn btn-success btn-buy-player">
-              Buy this player!
+            <% if @team.budget <= player.price%>
+            <button type="submit" class="btn btn-danger btn-buy-player"
+                                  data-controller="sweetalert"
+                                  data-action="click->sweetalert#initSweetalert"
+                                  data-sweetalert-title-value="Too expensive!"
+                                  data-sweetalert-icon-value="question"
+                                  data-sweetalert-html-value="buy a cheaper player"
+                                  data-sweetalert-confirm-button-text-value="OK"
+                                  data-sweetalert-show-cancel-button-value="false"
+                                  data-sweetalert-cancel-button-text-value="NO"
+                                  data-turbo="false"
+                    >
+              Player too expensive !
             </button>
+            <% else %>
+            <button type="submit" class="btn btn-success btn-buy-player">
+            Buy this player!
+            </button>
+            <% end %>
           </form>
         </div>
       </div>
@@ -35,7 +51,11 @@
 </div>
 </div>
 <div class="right-container">
+<%if @team.photo.key.blank?%>
 <%= image_tag "logo_update2.png"%>
+<%else%>
+<%= cl_image_tag @team.photo.key%>
+<%end%>
   <div class="shopinfo">
     <h4> My shopping list !</h4>
       <h6> Budget: <%= number_to_currency(@team.budget, unit: '€', precision: 0) %> </h6>
