@@ -7,7 +7,8 @@
 <%= form_with url: team_path, method: :get, local: true do |form| %>
   <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
   <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team" %>
-  <%= form.text_field :position, value:params["position"], placeholder: "Chose his position" %>
+  <%= form.label :position, 'Position:' %>
+  <%= form.select :position, @unique_positions.prepend(["Any", ""]), prompt: 'Select Position' %>
   <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price" %>
   <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price" %>
   <%= form.submit "Search" %>
@@ -56,9 +57,9 @@
                   <button type="button" class="btn btn-success btn-buy-player"
                     data-controller="sweetalert"
                     data-action="click->sweetalert#initSweetalert"
-                    data-sweetalert-title-value="Are you sure ?"
+                    data-sweetalert-title-value="Your team is ready !"
                     data-sweetalert-icon-value="question"
-                    data-sweetalert-html-value="Voulez vous valider l'équipe selectionnée ?"
+                    data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
                     data-sweetalert-confirm-button-text-value="OK"
                     data-sweetalert-show-cancel-button-value="true"
                     data-sweetalert-cancel-button-text-value="NO"
