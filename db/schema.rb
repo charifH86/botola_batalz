@@ -73,7 +73,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.integer "price"
     t.string "poste", default: ""
+
   end
 
   create_table "team_players", force: :cascade do |t|
