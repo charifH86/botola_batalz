@@ -8,6 +8,13 @@
   }
 /* General styling for the right container */
 .right-container {
+  img{margin:0 auto;
+      display:block;
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
   padding: 20px;
   background-color: white;
   border-radius: 10px;
