@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_02_201423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.date "date"
+    t.string "endgame", default: "draw"
     t.index ["league_id"], name: "index_games_on_league_id"
   end
 
@@ -65,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "price"
     t.string "height"
     t.string "nationality"
     t.string "position"
@@ -73,10 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.integer "price"
     t.string "poste", default: ""
-
   end
 
   create_table "team_players", force: :cascade do |t|
@@ -84,6 +84,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position", default: "0"
+    t.integer "score", default: 0
     t.index ["player_id"], name: "index_team_players_on_player_id"
     t.index ["team_id"], name: "index_team_players_on_team_id"
   end
@@ -94,8 +96,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.integer "budget", default: 5000000
+    t.bigint "user_id", null: false
     t.index ["league_id"], name: "index_teams_on_league_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
