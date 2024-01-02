@@ -6,9 +6,9 @@
       <% @leagues.each do |league| %>
         <li>
           <%= league.name %>
-          <%= link_to "Add Team",new_league_team_path(league),class: "redbutton" unless league.teams.where(user:current_user).first  %>
+          <%= link_to "Add Team",new_league_team_path(league),class: "mybtn" unless league.teams.where(user:current_user).first  %>
           <%= league.teams.where(user:current_user).first.name if league.teams.where(user:current_user).first  %>
-          <%= link_to "show team",team_path(league.teams.where(user:current_user).first.id),class: "redbutton"  if league.teams.where(user:current_user).first %>
+          <%= link_to "Show team",team_path(league.teams.where(user:current_user).first.id),class: "mybtn"  if league.teams.where(user:current_user).first %>
         </li>
       <% end %>  
     </ul>
