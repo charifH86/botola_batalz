@@ -1,4 +1,10 @@
 <h1>Leagues#show</h1>
 <p>Find me in app/views/leagues/show.html.erb</p>
-
-<input data-controller="flatpickr" data-flatpickr-inline="true" style="height:300px;width:300px;">
+<div class="left container">
+    <input data-controller="flatpickr" data-flatpickr-inline="true" style="height:300px;width:300px;">
+</div>
+<div class="starter" style="height:300px;width:300px;">
+    <%if current_user.admin? %>
+      <%= button_to 'Start League', start_league_league_path(@league), method: :post %>
+    <% end %>
+  </div>

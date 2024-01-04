@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
 
       if @team.budget >= player.price
         @team_player = TeamPlayer.new(player_id: params[:player_id], team_id: @team.id)
-        @team.valo = 0
+        @team.valo = 0 if @team.valo.nil?
         @team.valo += player.price
         @team.budget -= player.price
 
