@@ -1,15 +1,13 @@
 <div class='imageback' style='background-image:linear-gradient(90deg, rgba(255,71,71,0.02) 0%, rgba(0,0,0,0.5) 35%, rgba(255,71,71,0.02) 100%),url(<%=image_path "image1.png"%>)'>
   <h1 class='title'> BOTOLA BATALZ </h1>
 
-  <p class='paragraph'>
-    Play With you friends,
-    <span class='win'>win</span>
-    or
-    <span class='win'>lose</span>
-    <br>
-    but
-    <span class='win'>always have a fun</span>
-  </p>
+  <div class="left-container">
+    <h1 >  PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE ALWAYS HAVE A FUN </h1>
+    <div class="d-flex justify-content-around">
+      <a class="click-btn btn-style511 buttonlogin" href="<%= new_user_session_path%>"><span>Login</span></a>
+      <a class="click-btn btn-style511 buttonsingup" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
+    </div>
+  </div>
 
   <div class="btn-container">
     <a class='redbutton'href="<%=new_user_session_path%>">Log In</a>

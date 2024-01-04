@@ -1,3 +1,5 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css';
+
 // Specific CSS for your home-page
 .imageback{
   height: 100vh;
@@ -36,6 +38,44 @@ font-weight: 700;
 line-height: normal;
 font-family: $header-font;
 
+// .image{
+//   width: 20%;
+//   height: 60vh;
+//   // position:absolute;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   border-radius: 10%;
+//   box-shadow: 8%;
+
+// }
+.left-container{
+  color: rgb(255, 255, 255);
+  background-color: black;
+  width: 67%;
+  height:70vh;
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  flex-direction: column;
+
+
+
+  h1{
+  margin-top: 20px;
+  font-size: 60px ;
+  margin-left: 10px;
+  margin-bottom:10%;
+  font-weight: 900;
+  margin-left: 20px;
+  }
+}
+.floating-img{
+  z-index: 3;
+  margin-top: 10px;
+  width: 150PX;
+  position: absolute;
+  top: 21%;
+  left: 55%;
 }
 .paragraph {
 padding-top: 48px;
@@ -78,3 +118,4 @@ footer {
  font-size: small;
  font-family: $header-font;
 }
+// **************************************************
