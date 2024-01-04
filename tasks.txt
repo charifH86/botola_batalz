@@ -1,7 +1,0 @@
-To do ****
-cloudinary: images joueurs et images users
-barre de recherche
-****
-
- ****** Back up ******
- 

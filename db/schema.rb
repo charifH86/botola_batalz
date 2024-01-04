@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +51,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.date "date"
+    t.string "endgame", default: "draw"
     t.index ["league_id"], name: "index_games_on_league_id"
   end
 
@@ -65,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "price"
     t.string "height"
     t.string "nationality"
     t.string "position"
@@ -73,6 +77,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.integer "price"
+
     t.string "poste", default: ""
   end
 
@@ -81,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position", default: "0"
+    t.integer "score", default: 0
     t.index ["player_id"], name: "index_team_players_on_player_id"
     t.index ["team_id"], name: "index_team_players_on_team_id"
   end
@@ -91,7 +100,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "budget", default: 5000000
+    t.bigint "user_id", null: false
     t.index ["league_id"], name: "index_teams_on_league_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -115,4 +128,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
   add_foreign_key "team_players", "players"
   add_foreign_key "team_players", "teams"
   add_foreign_key "teams", "leagues"
+  add_foreign_key "teams", "users"
 end
