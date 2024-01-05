@@ -5,9 +5,9 @@ class TeamsController < ApplicationController
     formerly_selected_players = TeamPlayer.where('team_id IN (?)', @league.teams.pluck(:id)).pluck(:player_id)
     @unique_positions = Player.pluck(:poste).uniq
     if formerly_selected_players.blank?
-      @players = Player.all
+      @players = Player.order(price: :desc)
     else
-      @players = Player.where('id NOT IN (?)', formerly_selected_players)
+      @players = Player.order(price: :desc).where('id NOT IN (?)', formerly_selected_players)
     end
 
     if params[:first_name].present?
@@ -30,6 +30,9 @@ class TeamsController < ApplicationController
 
     if params[:position].present? && params[:position] != "Any"
       @players = @players.where(poste: params[:position])
+    end
+    respond_to do |format|
+      format.html
     end
   end
 
