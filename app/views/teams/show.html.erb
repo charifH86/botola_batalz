@@ -2,14 +2,14 @@
 <div class="left-container">
 <h1>Pick your players !</h1>
 <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
-
-<%= form_with url: team_path, method: :get, local: true do |form| %>
+<div data-controller="search">
+  <%= form_with url: team_path, method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
   <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
-  <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team" %>
+  <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team",data: {search_target: "input", action: "keyup->search#update"} %>
   <%= form.label :position, 'Position:' %>
-  <%= form.select :position, @unique_positions.prepend(["Any", ""]), prompt: 'Select Position' %>
-  <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price" %>
-  <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price" %>
+  <%= form.select :position, @unique_positions.prepend(["Any", ""]), prompt: 'Select Position',data: {search_target: "input", action: "keyup->search#update"} %>
+  <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price",data: {search_target: "input", action: "keyup->search#update"}%>
+  <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price",data: {search_target: "input", action: "keyup->search#update"} %>
   <%= form.submit "Search" %>
 <% end %>
 
@@ -88,5 +88,6 @@
                     Validate
                   </button>
                 </form>
+</div>
 </div>
 </div>

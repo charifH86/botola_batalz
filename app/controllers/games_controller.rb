@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
-  def index
+  def show
+    @league = League.find(params[:id])
+    @games = @league.games
   end
 end

@@ -57,7 +57,8 @@ ALGO_SCORE&CLASSEMNT    Past goals, new goals (push new goals >> past goals) et 
 Dashboard     Calendrier des matchs en amont
 Dashboard     a chaque match les données sont mises à jour (appel d'api, necessité de séparer historique des buts avec les vrais buts)
 
-games#index   Dashboard Back: rules controller      not started    TBD
+League_Model  supprimer budget de la league (budget addossé à une team)
+
 
 ****
 
