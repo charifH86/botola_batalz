@@ -25,5 +25,11 @@ class GamesController < ApplicationController
       team_player.save!
     end
       team_score = TeamPlayer.where(team: team).pluck(:socre).sum
+
+      games_as_v = Game.where(visitorteam_id: team.id, date: Date.today ).first
+      games_as_l = Game.where(localteam_id: team.id, date: Date.today ).first
+
+      games_as_v.update(score_v: team_score) unless(games_as_v.blank?)
+      games_as_l.update(score_l: team_score) unless(games_as_l.blank?)
   end
 end
