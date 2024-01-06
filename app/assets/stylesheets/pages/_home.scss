@@ -1,3 +1,5 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css';
+
 // Specific CSS for your home-page
 // .imageback{
 //   height: 100vh;
@@ -109,10 +111,19 @@ background-color:$tertiary ;
   width: 67%;
   height:70vh;
 
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  flex-direction: column;
+
+
 
 
   h1{
-  margin-top: 40px;
+
+  margin-top: 20px;
+
+
   font-size: 60px ;
   margin-left: 10px;
   margin-bottom:10%;
@@ -368,3 +379,4 @@ background-color:$tertiary ;
     }
   }
 }
+// **************************************************
