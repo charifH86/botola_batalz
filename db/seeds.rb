@@ -117,26 +117,38 @@
 # end
 
 # # We take only Player that still have the id inside image_url
-# Player.where("length(image_url) < 20").each do |player|
-#     profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/#{player.image_url}/profile")
-#     profile = JSON.parse(profile_response)
-#     player.update!(image_url: profile['imageURL']  == nil ? "https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=1" : profile['imageURL'] )
-#     p "profile image set : #{ player.image_url} - player :#{player.first_name}"
-# end
+#  Player.where("length(image_url) < 20").each do |player|
+#      player.tm_id = player.image_url
+#      player.save!     
+#      profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/#{player.image_url}/profile")
+#      profile = JSON.parse(profile_response)
+#      player.update!(image_url: profile['imageURL']  == nil ? "https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=1" : profile['imageURL'] )
+#      p "profile image set : #{ player.image_url} - player :#{player.first_name}"
+#  end
 
 
 # p "Seeding finished 🌱"
-Player.all.each do |player|
-  if player.position == "Goalkeeper"
-    player.update!(poste: "Goalkeeper")
-  end
-  if player.position == "Right-Back" || player.position == "Centre-Back" || player.position == "Left-Back" || player.position == "Defender"
-    player.update!(poste: "Defender")
-  end
-  if player.position == "Defensive Midfield" || player.position == "Central Midfield" || player.position == "Attacking Midfield" || player.position == "Right Midfield" || player.position == "Mittelfeld"
-    player.update!(poste: "Mittelfeld")
-  end
-  if player.position == "Left Winger" || player.position == "Right Winger" || player.position == "Centre-Forward" || player.position == "Second Striker" || player.position == "Striker"
-    player.update!(poste: "Striker")
-  end
-end
+# Player.all.each do |player|
+#   if player.position == "Goalkeeper"
+#     player.update!(poste: "Goalkeeper")
+#   end
+#   if player.position == "Right-Back" || player.position == "Centre-Back" || player.position == "Left-Back" || player.position == "Defender"
+#     player.update!(poste: "Defender")
+#   end
+#   if player.position == "Defensive Midfield" || player.position == "Central Midfield" || player.position == "Attacking Midfield" || player.position == "Right Midfield" || player.position == "Mittelfeld"
+#     player.update!(poste: "Mittelfeld")
+#   end
+#   if player.position == "Left Winger" || player.position == "Right Winger" || player.position == "Centre-Forward" || player.position == "Second Striker" || player.position == "Striker"
+#     player.update!(poste: "Striker")
+#   end
+# end
+
+
+
+ Player.where("tm_id is null").each do |player|
+        
+     profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/search/#{CGI.escape(player.first_name)}?page_number=1")
+     profile = JSON.parse(profile_response)
+     player.update!(tm_id: profile["results"][0]["id"]) if profile["results"][0]
+     p "profile image set : #{ player.tm_id} - player :#{player.first_name}"
+ end

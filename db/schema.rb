@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_04_204622) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "price"
     t.string "height"
     t.string "nationality"
     t.string "position"
@@ -78,9 +81,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
 
+
     t.integer "price"
 
+
     t.string "poste", default: ""
+    t.string "tm_id"
+    t.string "new_goal"
+    t.string "past_goal"
   end
 
   create_table "team_players", force: :cascade do |t|
@@ -100,8 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_131045) do
     t.bigint "league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "budget", default: 5000000
     t.bigint "user_id", null: false
+    t.integer "budget", default: 5000000
     t.index ["league_id"], name: "index_teams_on_league_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
