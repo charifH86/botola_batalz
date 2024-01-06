@@ -1,0 +1,36 @@
+  <div class="card-container" data-search-target="list">
+        <% players.each do |player| %>
+          <div class="row">
+            <div class="card" style="width: 15rem;">
+              <img src="<%= player.image_url %>" class="card-img-top scene" alt="moroccan professional player">
+              <div class="card-body">
+                <h5 class="card-title"><%= player.first_name %> </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency(player.price, unit: '€', precision: 0) %></h6>
+                <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
+                <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
+                <form method="PATCH" action='<%= "/leagues/#{@league.id}/teams/#{@team.id}?player_id=#{player.id}&first_name=#{@first_name}&current_team=#{@current_team}&position=#{@position}&min_price=#{@min_price}&max_price=#{@max_price}&commit=Search" %>'>
+                  <% if @team.budget <= player.price%>
+                  <button type="submit" class="btn btn-danger btn-buy-player"
+                                        data-controller="sweetalert"
+                                        data-action="click->sweetalert#initSweetalert"
+                                        data-sweetalert-title-value="Too expensive!"
+                                        data-sweetalert-icon-value="question"
+                                        data-sweetalert-html-value="buy a cheaper player"
+                                        data-sweetalert-confirm-button-text-value="OK"
+                                        data-sweetalert-show-cancel-button-value="false"
+                                        data-sweetalert-cancel-button-text-value="NO"
+                                        data-turbo="false"
+                          >
+                    Player too expensive !
+                  </button>
+                  <% else %>
+                  <button type="submit" class="btn btn-success btn-buy-player">
+                  Buy this player!
+                  </button>
+                  <% end %>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>

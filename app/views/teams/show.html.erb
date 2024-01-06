@@ -1,93 +1,64 @@
 <div class="super-container">
-<div class="left-container">
-<h1>Pick your players !</h1>
-<p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
-<div data-controller="search">
-  <%= form_with url: team_path, method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
-  <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name" %>
-  <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team",data: {search_target: "input", action: "keyup->search#update"} %>
-  <%= form.label :position, 'Position:' %>
-  <%= form.select :position, @unique_positions.prepend(["Any", ""]), prompt: 'Select Position',data: {search_target: "input", action: "keyup->search#update"} %>
-  <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price",data: {search_target: "input", action: "keyup->search#update"}%>
-  <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price",data: {search_target: "input", action: "keyup->search#update"} %>
-  <%= form.submit "Search" %>
-<% end %>
-
-<div class="card-container">
-  <% @players.each do |player| %>
-    <div class="row">
-      <div class="card" style="width: 15rem;">
-        <img src="<%= player.image_url %>" class="card-img-top scene" alt="moroccan professional player">
-        <div class="card-body">
-          <h5 class="card-title"><%= player.first_name %> </h5>
-          <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency(player.price, unit: '€', precision: 0) %></h6>
-          <h6 class="card-subtitle mb-2 text-muted">Position: <%= player.position %></h6>
-          <h6 class="card-subtitle mb-2 text-muted">Current team: <%= player.current_team %></h6>
-          <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}?player_id=#{player.id}" %>'>
-            <% if @team.budget <= player.price%>
-            <button type="submit" class="btn btn-danger btn-buy-player"
-                                  data-controller="sweetalert"
-                                  data-action="click->sweetalert#initSweetalert"
-                                  data-sweetalert-title-value="Too expensive!"
-                                  data-sweetalert-icon-value="question"
-                                  data-sweetalert-html-value="buy a cheaper player"
-                                  data-sweetalert-confirm-button-text-value="OK"
-                                  data-sweetalert-show-cancel-button-value="false"
-                                  data-sweetalert-cancel-button-text-value="NO"
-                                  data-turbo="false"
-                    >
-              Player too expensive !
-            </button>
-            <% else %>
-            <button type="submit" class="btn btn-success btn-buy-player">
-            Buy this player!
-            </button>
-            <% end %>
-          </form>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-<div class="right-container">
-<%if @team.photo.key.blank?%>
-<%= image_tag "logo_update2.png"%>
-<%else%>
-<%= cl_image_tag @team.photo.key%>
-<%end%>
-  <div class="shopinfo">
-    <h4> My shopping list !</h4>
-      <h6> Budget: <%= number_to_currency(@team.budget, unit: '€', precision: 0) %> </h6>
-      <h6> You have selected <%= @team.team_players.count %> players </h6>
-  </div>
-    <div class="shopdetails">
-      <% @team.team_players.each do |t_player| %>
-      <br/>
-      <%= t_player.player.first_name.split.last%>
-      <form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
-                  <button type="submit" class="btn btn-danger">
-                    Delete
-                  </button>
-                </form>
+  <div class="left-container">
+    <h1>Pick your players !</h1>
+    <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
+    <div data-controller="search" class="form-search">
+      <%= form_with url: team_path, method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
+        <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name", data: {search_target: "name", action: "keyup->search#update"} %>
+        <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team",data: {search_target: "team", action: "keyup->search#update"} %>
+        <%= form.label :position, 'Position:' %>
+        <select name="position" id="position" data-search-target= "position"  data-action="change->search#update">
+          <% @unique_positions.prepend("Any").each do |p| %>
+            <option value="<%= p %>" <%= @position == p ? "selected" : "" %> ><%= p %></option>
+          <% end %>
+        </select>
+        <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price",data: {search_target: "min", action: "keyup->search#update"}%>
+        <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price",data: {search_target: "max", action: "keyup->search#update"} %>
+        <%= form.submit "Search" %>
       <% end %>
-      <h6> Your team is valuated at <%= number_to_currency(@team.valo, unit: '€', precision: 0) %> </h6>
+
+    <%= render "list", players: @players %>
     </div>
-    <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}" %>'>
-                  <button type="button" class="btn btn-success btn-buy-player"
-                    data-controller="sweetalert"
-                    data-action="click->sweetalert#initSweetalert"
-                    data-sweetalert-title-value="Your team is ready !"
-                    data-sweetalert-icon-value="question"
-                    data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
-                    data-sweetalert-confirm-button-text-value="OK"
-                    data-sweetalert-show-cancel-button-value="true"
-                    data-sweetalert-cancel-button-text-value="NO"
-                    data-turbo="false"
-                    >
-                    Validate
-                  </button>
-                </form>
+
+  </div>
+  <div class="right-container">
+  <%if @team.photo.key.blank?%>
+  <%= image_tag "logo_update2.png"%>
+  <%else%>
+  <%= cl_image_tag @team.photo.key%>
+  <%end%>
+    <div class="shopinfo">
+      <h4> My shopping list !</h4>
+        <h6> Budget: <%= number_to_currency(@team.budget, unit: '€', precision: 0) %> </h6>
+        <h6> You have selected <%= @team.team_players.count %> players </h6>
+    </div>
+      <div class="shopdetails">
+        <% @team.team_players.each do |t_player| %>
+        <br/>
+        <%= t_player.player.first_name.split.last%>
+        <form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
+                    <button type="submit" class="btn btn-danger">
+                      Delete
+                    </button>
+                  </form>
+        <% end %>
+        <h6> Your team is valuated at <%= number_to_currency(@team.valo, unit: '€', precision: 0) %> </h6>
+      </div>
+      <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}" %>'>
+                    <button type="button" class="btn btn-success btn-buy-player"
+                      data-controller="sweetalert"
+                      data-action="click->sweetalert#initSweetalert"
+                      data-sweetalert-title-value="Your team is ready !"
+                      data-sweetalert-icon-value="question"
+                      data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
+                      data-sweetalert-confirm-button-text-value="OK"
+                      data-sweetalert-show-cancel-button-value="true"
+                      data-sweetalert-cancel-button-text-value="NO"
+                      data-turbo="false"
+                      >
+                      Validate
+                    </button>
+                  </form>
+  </div>
 </div>
-</div>
-</div>
+

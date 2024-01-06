@@ -107,7 +107,8 @@
 #                                 nationality: player['nationality'][0],
 #                                 height: player['height'],
 #                                 current_team: team[:name],
-#                                 image_url: player['id']
+#                                 image_url: player['id'],
+#                                 tm_id: player['id']
 #                               )
 #       p "Creating player #{tmp_player.first_name} success ✅"
 #     end
@@ -118,16 +119,13 @@
 
 # # We take only Player that still have the id inside image_url
 #  Player.where("length(image_url) < 20").each do |player|
-#      player.tm_id = player.image_url
-#      player.save!     
-#      profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/#{player.image_url}/profile")
+#      profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/#{player.tm_id}/profile")
 #      profile = JSON.parse(profile_response)
 #      player.update!(image_url: profile['imageURL']  == nil ? "https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=1" : profile['imageURL'] )
 #      p "profile image set : #{ player.image_url} - player :#{player.first_name}"
 #  end
 
 
-# p "Seeding finished 🌱"
 # Player.all.each do |player|
 #   if player.position == "Goalkeeper"
 #     player.update!(poste: "Goalkeeper")
@@ -143,12 +141,13 @@
 #   end
 # end
 
+# p "Seeding finished 🌱"
 
 
- Player.where("tm_id is null").each do |player|
+# #  Player.where("tm_id is null").each do |player|
         
-     profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/search/#{CGI.escape(player.first_name)}?page_number=1")
-     profile = JSON.parse(profile_response)
-     player.update!(tm_id: profile["results"][0]["id"]) if profile["results"][0]
-     p "profile image set : #{ player.tm_id} - player :#{player.first_name}"
- end
+# #      profile_response = RestClient.get("https://transfermarkt-api.vercel.app/players/search/#{CGI.escape(player.first_name)}?page_number=1")
+# #      profile = JSON.parse(profile_response)
+# #      player.update!(tm_id: profile["results"][0]["id"]) if profile["results"][0]
+# #      p "profile image set : #{ player.tm_id} - player :#{player.first_name}"
+# #  end
