@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_204622) do
-
-
-
+ActiveRecord::Schema[7.0].define(version: 2024_01_06_100705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_204622) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "score"
     t.integer "localteam_id"
     t.integer "visitorteam_id"
     t.bigint "league_id", null: false
@@ -56,6 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_204622) do
     t.string "status", default: "pending"
     t.date "date"
     t.string "endgame", default: "draw"
+    t.string "score_l"
+    t.string "score_v"
     t.index ["league_id"], name: "index_games_on_league_id"
   end
 
@@ -80,11 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_204622) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-
-    t.integer "price"
-
-
     t.string "poste", default: ""
     t.string "tm_id"
     t.string "new_goal"
