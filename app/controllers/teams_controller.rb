@@ -4,6 +4,13 @@ class TeamsController < ApplicationController
     @league = @team.league
     formerly_selected_players = TeamPlayer.where('team_id IN (?)', @league.teams.pluck(:id)).pluck(:player_id)
     @unique_positions = Player.pluck(:poste).uniq
+
+    @first_name = params[:first_name]
+    @position = params[:position]
+    @min_price = params[:min_price]
+    @max_price = params[:max_price]
+    @current_team = params[:current_team]
+
     if formerly_selected_players.blank?
       @players = Player.order(price: :desc)
     else
@@ -31,8 +38,10 @@ class TeamsController < ApplicationController
     if params[:position].present? && params[:position] != "Any"
       @players = @players.where(poste: params[:position])
     end
+
     respond_to do |format|
-      format.html
+      format.html { render "teams/show"}
+      format.text { render partial: "teams/list", locals: {players: @players}, formats: [:html] }
     end
   end
 
@@ -64,7 +73,7 @@ class TeamsController < ApplicationController
         @team.budget -= player.price
 
         if @team.save! && @team_player.save!
-          redirect_to team_path(@team.id)
+          redirect_to "/teams/#{@team.id}/?first_name=&current_team=#{params['current_team']}&position=#{params['position']}&min_price=&max_price=&commit=Search"
         else
           render json: { success: false, message: "Error saving team" }, status: :unprocessable_entity
         end
