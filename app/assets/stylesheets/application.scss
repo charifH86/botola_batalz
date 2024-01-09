@@ -11,8 +11,11 @@
 @import "components/index";
 @import "pages/index";
 @import "leagues/new";
+@import "components/devise";
+@import "teams/index";
+
 
 body {
 background-color: lightgrey;
 }
-@import "teams/index";
+

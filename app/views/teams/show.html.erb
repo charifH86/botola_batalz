@@ -1,7 +1,10 @@
 <div class="super-container">
   <div class="left-container">
-    <h1>Pick your players !</h1>
-    <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
+    <div class="intro-msg">
+      <h1> Hi <%=@team.name%> ! </h1>
+      <h1>Pick your players!</h1> 
+      <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
+    </div>
     <div data-controller="search" class="form-search">
       <%= form_with url: team_path, method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
         <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name", data: {search_target: "name", action: "keyup->search#update"} %>
@@ -44,20 +47,34 @@
         <% end %>
         <h6> Your team is valuated at <%= number_to_currency(@team.valo, unit: '€', precision: 0) %> </h6>
       </div>
-      <form method="PATCH" action='<%="/leagues/#{@league.id}/teams/#{@team.id}" %>'>
-                    <button type="button" class="btn btn-success btn-buy-player"
-                      data-controller="sweetalert"
-                      data-action="click->sweetalert#initSweetalert"
-                      data-sweetalert-title-value="Your team is ready !"
-                      data-sweetalert-icon-value="question"
-                      data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
-                      data-sweetalert-confirm-button-text-value="OK"
-                      data-sweetalert-show-cancel-button-value="true"
-                      data-sweetalert-cancel-button-text-value="NO"
-                      data-turbo="false"
-                      >
-                      Validate
-                    </button>
+      <form method="PATCH" action='<%="/leagues/#{@league.id}" %>'>
+                    <%if @team.team_players.count > 11%>
+                      <button type="button" class="btn btn-success btn-buy-player"
+                        data-controller="sweetalert"
+                        data-action="click->sweetalert#initSweetalert"
+                        data-sweetalert-title-value="Your team is ready !"
+                        data-sweetalert-icon-value="question"
+                        data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
+                        data-sweetalert-confirm-button-text-value="OK"
+                        data-sweetalert-show-cancel-button-value="true"
+                        data-sweetalert-cancel-button-text-value="NO"
+                        data-turbo="false"
+                        >
+                        Validate
+                      </button>
+                    <%else%>
+                      <button type="button" class="btn btn-success btn-buy-player"
+                          data-controller="sweetalert"
+                        data-action="click->sweetalert#initSweetalert"
+                        data-sweetalert-title-value="Your must have at least 11 players in your squad!"
+                        data-sweetalert-icon-value="error"
+                        data-sweetalert-html-value=""
+                        data-sweetalert-confirm-button-text-value="OK"
+                        data-turbo="false"
+                        >
+                        Validate
+                      </button>
+                    <%end%>
                   </form>
   </div>
 </div>
