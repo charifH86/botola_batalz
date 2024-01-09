@@ -1,10 +1,35 @@
-<h1>Leagues#show</h1>
-<p>Find me in app/views/leagues/show.html.erb</p>
-<div class="left container">
-    <input data-controller="flatpickr" data-flatpickr-inline="true" style="height:300px;width:300px;">
-</div>
-<div class="starter" style="height:300px;width:300px;">
-    <%if current_user.admin? %>
-      <%= button_to 'Start League', start_league_league_path(@league), method: :post %>
-    <% end %>
+<div id="league-show"  >
+  <div class="main-container" style = "background-image:url(<%=image_url 'bpitch.png' %>)">
+     <%= render "left"  %> 
+    <div class="right-container">
+      <div class="score">
+        <div class = "teams">
+          <%= image_tag "1.png" %>
+          <p> Team 1</p>
+          <span> VS </span>
+          <p> Team 2</p>
+          <%= image_tag "2.png" %>
+
+        </div>
+      </div>
+      <div class= "tableau-ground">
+        <div class="tableau">
+        </div>
+        <div class="ground" style = "background-image:url(<%=image_url 'pitch.png' %>)">
+        <span class = "position" style = "top:25px; left:195px;">1</span>
+        <span class = "position" style = "top:70px; left:295px;">3</span>
+        <span class = "position" style = "top:70px; left:226px;">4</span>
+        <span class = "position" style = "top:70px; left:160px;">5</span>
+        <span class = "position" style = "top:70px; left:95px;">2</span>
+        <span class = "position" style = "top:150px; left:261px;">8</span>
+        <span class = "position" style = "top:130px; left:195px;">6</span>
+        <span class = "position" style = "top:150px; left:128px;">10</span>
+        <span class = "position" style = "top:220px; left:271px;">11</span>
+        <span class = "position" style = "top:240px; left:195px;">9</span>
+        <span class = "position" style = "top:220px; left:118px;">7</span>
+        </div> 
+      </div>
+    </div>
   </div>
+</div>
+
