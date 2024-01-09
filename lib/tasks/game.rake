@@ -20,7 +20,7 @@ namespace :game do
           team_player.score = player.new_goal.to_i - player.past_goal.to_i
           team_player.save!
         end
-        team_score = TeamPlayer.where(team: team).pluck(:socre).sum
+        team_score = TeamPlayer.where(team: team).pluck(:score).sum
 
         games_as_v = Game.where(visitorteam_id: team.id, date: Date.today ).first
         games_as_l = Game.where(localteam_id: team.id, date: Date.today ).first

@@ -4,7 +4,7 @@ class GamesController < ApplicationController
     @games = @league.games
   end
 
-  def ranking
+  # def ranking
   #   league = League.find(params[:league_id])
   #   team = Team.where(user:current_user,league:league).first
   #   players = team.players
