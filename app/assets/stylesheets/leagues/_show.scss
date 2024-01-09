@@ -3,15 +3,14 @@
 .main-container{
   display:flex ;
   width: 100vw;
-
-  background-color: black;
-
+  background-repeat: no-repeat;
+  background-size:cover ;
   height: calc(100vh  - 126px);
 
 
 .left-container{
 
-  background-color: red;
+  background-color: rgba(128, 128, 128, 0.631);
   width: 20%;
   height: calc(100vh  - 126px);
   i{
@@ -32,18 +31,46 @@
   flex-direction: column;
   width: 80%;
   height: calc(100vh - 126px);
-  background-color: rgb(9, 230, 46);
+  background-color: transparent;
 
 .score{
+  span{
+    font-family: $header-font;
+    font-size: x-large;
+    color:white;
+    font-weight: 700;
+    background-color: #05266e;
+    border-radius: 100%;
+    padding:16px;
+  }
+  p{
+    font-family: $header-font;
+    font-size: x-large;
+    color:#05266e;
+    font-weight: 700;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1c40f;
+  background-color:transparent;
   width: 100%;
-  height: 183px;
+  height: 160px;
+  .teams{
+    border-radius: 24px;
+    img{
+      width:96px;
+    }
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border:2px solid black;
+    width:70%;
+    height:80px;
+  }
 }
 .tableau-ground{
-  background-color: #8e44ad;
+  background-color: transparent;
   display:flex;
   width: 100%;
   height: calc(100vh - 183px - 126px);
@@ -52,13 +79,14 @@
 
 
 .ground{
-
-  background-color: #f4f4f4;
+  position :relative;
+  background-color: transparent;
   width:50%;
+  background-repeat: no-repeat;
 
 }
 .tableau{
-  background-color: #000000;
+  background-color:transparent;
   width: 50%;
 
 }
@@ -115,5 +143,17 @@ $turquoise: #1abc9c;
     color: #fff;
     outline: 0;
   }
+}
+.position{
+  position : absolute;
+  height: 45px;
+  width: 45px ;
+  border-radius: 100%;
+  background-color: black;
+  border:2px solid white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
 }
 }
