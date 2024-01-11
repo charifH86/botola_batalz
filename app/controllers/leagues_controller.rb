@@ -1,5 +1,7 @@
 class LeaguesController < ApplicationController
   def show
+    #leaguesshow
+    @league = League.find(params[:id])
   end
 
   def create
@@ -13,7 +15,7 @@ class LeaguesController < ApplicationController
     league = League.find(params[:id])
     league.schedule_matchups
     # Redirect to a suitable path, maybe the league's show page
-    redirect_to league_path(league), notice: 'League has started, and matchups have been scheduled!'
+    redirect_to leagues_path(league), notice: 'League has started, and matchups have been scheduled!'
   end
 
   def new

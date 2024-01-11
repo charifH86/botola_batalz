@@ -1,159 +1,199 @@
-
 #league-show {
-.main-container{
-  display:flex ;
-  width: 100vw;
-  background-repeat: no-repeat;
-  background-size:cover ;
-  height: calc(100vh  - 126px);
-
-
-.left-container{
-
-  background-color: rgba(128, 128, 128, 0.631);
-  width: 20%;
-  height: calc(100vh  - 126px);
-  i{
-    font-size: small;
-    color: black;
-  }
-  h1{
-    text-align: center;
-  }
-.calender{
-
-  margin-left: 18%;
-}
-
-}
-.right-container{
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: calc(100vh - 126px);
-  background-color: transparent;
-
-.score{
-  span{
-    font-family: $header-font;
-    font-size: x-large;
-    color:white;
-    font-weight: 700;
-    background-color: #05266e;
-    border-radius: 100%;
-    padding:16px;
-  }
-  p{
-    font-family: $header-font;
-    font-size: x-large;
-    color:#05266e;
-    font-weight: 700;
-  }
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:transparent;
-  width: 100%;
-  height: 160px;
-  .teams{
-    border-radius: 24px;
-    img{
-      width:96px;
-    }
+  .main-container {
     display: flex;
-    justify-content: space-around;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 126px);
+
+    .left-container {
+      background-color: rgba(128, 128, 128, 0.631);
+      width: 20%;
+      height: calc(100vh - 126px);
+      i {
+        font-size: small;
+        color: black;
+      }
+      h1 {
+        text-align: center;
+      }
+      .calender {
+        margin-left: 18%;
+      }
+    }
+    .right-container {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      height: calc(100vh - 126px);
+      background-color: transparent;
+
+      .score {
+        span {
+          font-family: $header-font;
+          font-size: x-large;
+          color: white;
+          font-weight: 700;
+          background-color: #05266e;
+          border-radius: 100%;
+          padding: 16px;
+        }
+        p {
+          font-family: $header-font;
+          font-size: x-large;
+          color: #05266e;
+          font-weight: 700;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        width: 100%;
+        height: 160px;
+        .teams {
+          border-radius: 24px;
+          img {
+            width: 96px;
+          }
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          background-color: white;
+          border: 2px solid black;
+          width: 70%;
+          height: 80px;
+        }
+      }
+      .tableau-ground {
+        background-color: transparent;
+        display: flex;
+        width: 100%;
+        height: calc(100vh - 183px - 126px);
+
+        .ground {
+          position: relative;
+          background-color: transparent;
+          width: 50%;
+          background-repeat: no-repeat;
+        }
+        .tableau {
+          background-color: transparent;
+          width: 50%;
+
+          table.GeneratedTable {
+
+            width: 100%;
+            margin-left: 5px;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #000000;
+            border-style: solid;
+            color: #0d0c0c;
+         th{
+          border-width: 5px;
+          font-size: larger;
+          color: white;
+          text-align: center;
+
+         }
+         .one{
+            background-color: yellow;
+            color: black;
+            width: 35px;
+          }
+          .two{
+            text-align: center;
+            font-weight: bold;
+          }
+          .three{
+            font-family: $header-font;
+            font-size: large;
+            color: black;
+            font-weight: 100;
+          }
+          .clo{
+            background-color: #6c757d;
+            color: white;
+          }
+
+
+
+          }
+
+          table.GeneratedTable td,
+          table.GeneratedTable th {
+            border-width: 2px;
+            border-color: #000000;
+            border-style: solid;
+            padding: 3px;
+          }
+
+          table.GeneratedTable thead {
+            background-color: #6c757d;
+          }
+        }
+      }
+    }
+
+    .flatpickr-months {
+      padding-top: 30px;
+    }
+
+    .flatpickr-innerContainer {
+      padding: 0 30px 30px;
+    }
+  }
+
+  .first {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    &:hover {
+      box-shadow: 0 0 40px 40px $red inset;
+    }
+  }
+  $green: #2ecc71;
+  $red: #e74c3c;
+  $blue: #3498db;
+  $yellow: #f1c40f;
+  $purple: #8e44ad;
+  $turquoise: #1abc9c;
+  .btn {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+
+    border-radius: 0.6em;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      outline: 0;
+    }
+  }
+  .position {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background-color: black;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    border:2px solid black;
-    width:70%;
-    height:80px;
+    color: white;
   }
-}
-.tableau-ground{
-  background-color: transparent;
-  display:flex;
-  width: 100%;
-  height: calc(100vh - 183px - 126px);
-
-
-
-
-.ground{
-  position :relative;
-  background-color: transparent;
-  width:50%;
-  background-repeat: no-repeat;
-
-}
-.tableau{
-  background-color:transparent;
-  width: 50%;
-
-}
-}
-}
-
-  .flatpickr-months {
-    padding-top: 30px;
-  }
-
-  .flatpickr-innerContainer {
-    padding: 0 30px 30px;
-  }
-}
-
-
-
-
-.first {
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  &:hover {
-    box-shadow: 0 0 40px 40px $red inset;
-  }
-}
-$green: #2ecc71;
-$red: #e74c3c;
-$blue: #3498db;
-$yellow: #f1c40f;
-$purple: #8e44ad;
-$turquoise: #1abc9c;
-.btn {
-  box-sizing: border-box;
-  appearance: none;
-  background-color: transparent;
-
-  border-radius: 0.6em;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-self: center;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 20px;
-  padding: 1.2em 2.8em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    outline: 0;
-  }
-}
-.position{
-  position : absolute;
-  height: 45px;
-  width: 45px ;
-  border-radius: 100%;
-  background-color: black;
-  border:2px solid white;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color:white;
-}
 }

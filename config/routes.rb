@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :leagues do
     member do
-      post :start_league
+      get :start_league
     end
     resources :teams, only: [:create, :new, :update]
     member do
