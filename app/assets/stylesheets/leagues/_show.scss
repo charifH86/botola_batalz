@@ -81,7 +81,6 @@
           width: 50%;
 
           table.GeneratedTable {
-
             width: 100%;
             margin-left: 5px;
             background-color: #ffffff;
@@ -90,35 +89,35 @@
             border-color: #000000;
             border-style: solid;
             color: #0d0c0c;
-         th{
-          border-width: 5px;
-          font-size: larger;
-          color: white;
-          text-align: center;
-
-         }
-         .one{
-            background-color: yellow;
-            color: black;
-            width: 35px;
-          }
-          .two{
-            text-align: center;
-            font-weight: bold;
-          }
-          .three{
-            font-family: $header-font;
-            font-size: large;
-            color: black;
-            font-weight: 100;
-          }
-          .clo{
-            background-color: #6c757d;
+         
+            th{
+            border-width: 5px;
+            font-size: larger;
             color: white;
-          }
+            text-align: center;
+            }
 
+          .one{
+              background-color: yellow;
+              color: black;
+              width: 35px;
+            }
 
+            .two{
+              text-align: center;
+              font-weight: bold;
+            }
 
+            .three{
+              font-family: $header-font;
+              font-size: large;
+              color: black;
+              font-weight: 100;
+            }
+            .clo{
+              background-color: #6c757d;
+              color: white;
+            }
           }
 
           table.GeneratedTable td,
