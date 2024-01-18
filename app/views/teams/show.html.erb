@@ -1,3 +1,4 @@
+<div id="team-show">
 <div class="super-container">
   <div class="left-container">
     <div class="intro-msg">
@@ -15,8 +16,12 @@
             <option value="<%= p %>" <%= @position == p ? "selected" : "" %> ><%= p %></option>
           <% end %>
         </select>
-        <%= form.number_field :min_price, value:params["min_price"], placeholder: "Min price",data: {search_target: "min", action: "keyup->search#update"}%>
-        <%= form.number_field :max_price, value:params["max_price"],placeholder: "Max price",data: {search_target: "max", action: "keyup->search#update"} %>
+        <div class="price-range-filters">
+        <label for="max_price">Max Price:</label>
+        <input type="range" id="max_price" name="max_price" min="0" max="3000000" value="<%= params[:max_price] || 3000000 %>" step="50000" data-action="change->search#update">
+        <span>€<%= params[:max_price] || 3000000 %></span>
+      </div>
+
         <%= form.submit "Search" %>
       <% end %>
 
@@ -64,12 +69,13 @@
                       </button>
                     <%else%>
                       <button type="button" class="btn btn-success btn-buy-player"
-                          data-controller="sweetalert"
+                        data-controller="sweetalert"
                         data-action="click->sweetalert#initSweetalert"
                         data-sweetalert-title-value="Your must have at least 11 players in your squad!"
                         data-sweetalert-icon-value="error"
                         data-sweetalert-html-value=""
-                        data-sweetalert-confirm-button-text-value="OK"
+                        data-sweetalert-show-cancel-button-value="true"
+                        data-sweetalert-cancel-button-text-value="OK"
                         data-turbo="false"
                         >
                         Validate
@@ -78,4 +84,4 @@
                   </form>
   </div>
 </div>
-
+</div>

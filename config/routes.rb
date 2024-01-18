@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get "leagues/:league_id/ranking" , to: "games#ranking"
+  post "startingsquad/:id/:team_player_id" , to: "leagues#startingsquad"
 end
