@@ -9,61 +9,73 @@
           <span> VS </span>
           <p> Team 2</p>
           <%= image_tag "2.png" %>
-
         </div>
       </div>
       <div class= "tableau-ground">
         <div class="tableau">
-
-
-
-<table class="GeneratedTable">
-
-  <thead>
-    <tr>
-      <th class="clo" colspan="2">Classement</th>
-      <th class="one">P</th>
-      <th class="one">W</th>
-      <th class="one">D</th>
-      <th class="one">L</th>
-      <th class="one">PTS</th>
-
-    </tr>
-  </thead>
-  <tbody>
-  <% @league.teams.each_with_index do |team,index| %>
-  <% team.local_games.map {|game|  (game.endgame == "win" ? 3 : game.endgame == "draw"  ? 1 : 0 )}.sum %>
-
-    <tr>
-      <td class="two clo"><%= index+1 %></td>
-      <td class="three"><%=team.name %></td>
-      <td class="two"><%= team.local_games.count + team.visitor_games.count %></td>
-      <td class="two"></td>
-      <td class="two">5</td>
-      <td class="two">2</td>
-      <td class="two">5</td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
+          <table class="GeneratedTable">
+            <thead>
+              <tr>
+                <th class="clo" colspan="2">Classement</th>
+                <th class="one">P</th>
+                <th class="one">W</th>
+                <th class="one">D</th>
+                <th class="one">L</th>
+                <th class="one">PTS</th>
+              </tr>
+            </thead>
+              <tbody>
+                <% @league.teams.each_with_index do |team,index| %>
+                <% team.local_games.map {|game|  (game.endgame == "win" ? 3 : game.endgame == "draw"  ? 1 : 0 )}.sum %>
+                  <tr>
+                    <td class="two clo"><%= index+1 %></td>
+                    <td class="three"><%=team.name %></td>
+                    <td class="two"><%= team.local_games.count + team.visitor_games.count %></td>
+                    <td class="two"></td>
+                    <td class="two">5</td>
+                    <td class="two">2</td>
+                    <td class="two">5</td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
         </div>
-        <div class="ground" style = "background-image:url(<%=image_url 'pitch.png' %>)">
-        <span class = "position" style = "top:25px; left:195px;">1</span>
-        <span class = "position" style = "top:70px; left:295px;">3</span>
-        <span class = "position" style = "top:70px; left:226px;">4</span>
-        <span class = "position" style = "top:70px; left:160px;">5</span>
-        <span class = "position" style = "top:70px; left:95px;">2</span>
-        <span class = "position" style = "top:150px; left:261px;">8</span>
-        <span class = "position" style = "top:130px; left:195px;">6</span>
-        <span class = "position" style = "top:150px; left:128px;">10</span>
-        <span class = "position" style = "top:220px; left:271px;">11</span>
-        <span class = "position" style = "top:240px; left:195px;">9</span>
-        <span class = "position" style = "top:220px; left:118px;">7</span>
+          <div class="ground" style = "background-image:url(<%=image_url 'pitch.png' %>)">
+            <span class = "position" style = "top:25px; left:195px;">1</span>
+            <span class = "position" style = "top:70px; left:295px;">3</span>
+            <span class = "position" style = "top:70px; left:226px;">4</span>
+            <span class = "position" style = "top:70px; left:160px;">5</span>
+            <span class = "position" style = "top:70px; left:95px;">2</span>
+            <span class = "position" style = "top:150px; left:261px;">8</span>
+            <span class = "position" style = "top:130px; left:195px;">6</span>
+            <span class = "position" style = "top:150px; left:128px;">10</span>
+            <span class = "position" style = "top:220px; left:271px;">11</span>
+            <span class = "position" style = "top:240px; left:195px;">9</span>
+            <span class = "position" style = "top:220px; left:118px;">7</span>
+        </div>
+        <div class="lineup">
+          <h3> TITULAIRES </h3>
+          <% @team_players_titulaire.each_with_index do |team_player,index|%>
+            <div id= "<%= team_player.player.id %>">
+            
+            <form action= "/startingsquad/<%=@league.id%>/<%= team_player.id %>" method="POST">
+            <input type="submit" value="<%= index+1 %>-<%= team_player.player.first_name.split.last %>"> 
+            </form>
+            </div>
+          <% end %>
+        </div>
+        <div class="lineup">
+          <h3> SUBS </h3>
+          <% @team_players_subs.each do |team_player|%>
+            <div id= "<%= team_player.player.id %>">
+            <form action= "/startingsquad/<%=@league.id%>/<%= team_player.id %>" method="POST">
+            <input type="submit" value="<%= team_player.player.first_name.split.last %>"> 
+            </form>
+            </div>
+          <% end %>
         </div>
       </div>
+        
     </div>
   </div>
 </div>

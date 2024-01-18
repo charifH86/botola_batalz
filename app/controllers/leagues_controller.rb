@@ -2,12 +2,14 @@ class LeaguesController < ApplicationController
   def show
     #leaguesshow
     @league = League.find(params[:id])
+    @team_players_titulaire = @league.teams.where(user: current_user).first.team_players.where(titulaire: true)
+    @team_players_subs= @league.teams.where(user: current_user).first.team_players.where(titulaire: false)
   end
 
   def create
     # depends if you are the admin or not
     # we should create a button "start the league" for the admin and a button "join the league" for other users
-    league = League.create!(name: params[:league][:name], user: current_user, budget: "1000000", balance: "1000000")
+    league = League.create!(name: params[:league][:name], user: current_user)
     redirect_to new_league_team_path(league)
   end
 
@@ -23,7 +25,12 @@ class LeaguesController < ApplicationController
     @leagues = League.where(user: current_user)
   end
 
-  def update
+  def startingsquad
+    team_player_id = params[:team_player_id]
+    t = TeamPlayer.find(team_player_id)
+    titulaire = !t.titulaire
+    t.update(titulaire: titulaire)
+    redirect_to league_path(params[:id]) 
   end
 
   def edit

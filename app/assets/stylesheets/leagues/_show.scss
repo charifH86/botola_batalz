@@ -70,6 +70,16 @@
         width: 100%;
         height: calc(100vh - 183px - 126px);
 
+        .lineup {
+         color:white;
+         font-weight: 700;
+         margin: 0 30px;
+         width: 300px;
+         height:400px;
+         border: 2px solid white;
+         border-radius: 4px; 
+         text-align: center;
+        }
         .ground {
           position: relative;
           background-color: transparent;
@@ -81,7 +91,6 @@
           width: 50%;
 
           table.GeneratedTable {
-
             width: 100%;
             margin-left: 5px;
             background-color: #ffffff;
@@ -90,35 +99,35 @@
             border-color: #000000;
             border-style: solid;
             color: #0d0c0c;
-         th{
-          border-width: 5px;
-          font-size: larger;
-          color: white;
-          text-align: center;
-
-         }
-         .one{
-            background-color: yellow;
-            color: black;
-            width: 35px;
-          }
-          .two{
-            text-align: center;
-            font-weight: bold;
-          }
-          .three{
-            font-family: $header-font;
-            font-size: large;
-            color: black;
-            font-weight: 100;
-          }
-          .clo{
-            background-color: #6c757d;
+         
+            th{
+            border-width: 5px;
+            font-size: larger;
             color: white;
-          }
+            text-align: center;
+            }
 
+          .one{
+              background-color: yellow;
+              color: black;
+              width: 35px;
+            }
 
+            .two{
+              text-align: center;
+              font-weight: bold;
+            }
 
+            .three{
+              font-family: $header-font;
+              font-size: large;
+              color: black;
+              font-weight: 100;
+            }
+            .clo{
+              background-color: #6c757d;
+              color: white;
+            }
           }
 
           table.GeneratedTable td,
