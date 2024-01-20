@@ -1,6 +1,7 @@
 class League < ApplicationRecord
   belongs_to :user
   has_many :teams
+  has_many :games
 
   def schedule_matchups
     teams = self.teams.pluck(:id)

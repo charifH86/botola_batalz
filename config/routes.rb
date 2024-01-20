@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get "start_league", to: "leagues#start_league"
   resources :leagues do
-    member do
-      get :start_league
-    end
-    resources :teams, only: [:create, :new, :update,:show]
-    member do
-      post 'update'
-    end
+    resources :teams, only: [:create, :new, :update, :show]
     resources :games, only: :index
   end
-  resources :teams, only: [ :update, :delete]
+  resources :teams, only: [:update, :delete]
   patch "/removefromteam/:id", to: "teams#remove_player"
 
 
@@ -22,4 +17,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "leagues/:league_id/ranking" , to: "games#ranking"
   post "startingsquad/:id/:team_player_id" , to: "leagues#startingsquad"
+  post "startleague/:id" , to:"leagues#start_league"
 end

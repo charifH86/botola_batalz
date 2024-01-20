@@ -5,9 +5,9 @@
       <div class="score">
         <div class = "teams">
           <%= image_tag "1.png" %>
-          <p> Team 1</p>
+          <p> <%= Team.find(@league.games.where(status: "pending").first.visitorteam_id).name %></p>
           <span> VS </span>
-          <p> Team 2</p>
+          <p> <%= Team.find(@league.games.where(status: "pending").first.localteam_id).name %></p>
           <%= image_tag "2.png" %>
         </div>
       </div>
@@ -31,10 +31,10 @@
                     <td class="two clo"><%= index+1 %></td>
                     <td class="three"><%=team.name %></td>
                     <td class="two"><%= team.local_games.count + team.visitor_games.count %></td>
-                    <td class="two"></td>
-                    <td class="two">5</td>
-                    <td class="two">2</td>
-                    <td class="two">5</td>
+                    <td class="two">-</td>
+                    <td class="two">-</td>
+                    <td class="two">-</td>
+                    <td class="two">-</td>
                   </tr>
                 <% end %>
               </tbody>

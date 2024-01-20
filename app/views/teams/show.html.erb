@@ -7,7 +7,7 @@
       <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
     </div>
     <div data-controller="search" class="form-search">
-      <%= form_with url: team_path(@team.league.id, @team.id), method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
+      <%= form_with url: league_team_path(@team.league.id, @team.id), method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
         <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name", data: {search_target: "name", action: "keyup->search#update"} %>
         <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team", data: {search_target: "team", action: "keyup->search#update"} %>
         <%= form.label :position, 'Position:' %>
@@ -30,6 +30,12 @@
 
   </div>
   <div class="right-container">
+   
+    <% if @league.user == current_user && @league.teams.count >= 2 && @league.teams.count.even? %>
+    <form method="POST" action="/startleague/<%= @league.id%>">
+      <input type="submit" class="btn btn-danger" value="Start !"/>
+      </form>
+    <% end %>
   <%if @team.photo.key.blank?%>
   <%= image_tag "logo_update2.png"%>
   <%else%>
