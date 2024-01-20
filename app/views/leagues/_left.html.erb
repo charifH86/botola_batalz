@@ -2,7 +2,7 @@
     <h1>Welcome to your dashboard !</h1>
         <a class= "btn first"   href="">The Starting squad</a>
         <a class= "btn first"   href="">The Bench</a>
-        <a class= "btn first" href="#" >My Budget</a>
+        <a class= "btn first" href="#" >My Budget <p> &nbsp; - &nbsp; &nbsp;  <%= current_user.teams.where(league: @league).first.budget %> </p> </a>
       
     <input id="flatpickr" data-controller="flatpickr" data-flatpickr-inline="true" value="<%= Date.today %>" style="height:42px;width:100px;display:none;">
   <footer>

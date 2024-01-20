@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
     @team.league_id = params[:league_id]
     @team.user_id = current_user.id
     if @team.save!
-      redirect_to team_path(@team)
+      redirect_to league_team_path(params[:league_id],@team)
     end
   end
 
@@ -73,7 +73,7 @@ class TeamsController < ApplicationController
         @team.budget -= player.price
 
         if @team.save! && @team_player.save!
-          redirect_to "/teams/#{@team.id}/?first_name=&current_team=#{params['current_team']}&position=#{params['position']}&min_price=&max_price=&commit=Search"
+          redirect_to "/teams/#{@team.id}/?first_name=&current_team=#{params['current_team']}&position=#{params['position']}&min_price=&max_price=#{params['max_price']}&commit=Search"
         else
           render json: { success: false, message: "Error saving team" }, status: :unprocessable_entity
         end
@@ -97,7 +97,7 @@ class TeamsController < ApplicationController
     t.team.budget += t.player.price
     if t.team.save! && t.team.league.save!
       t.destroy
-      redirect_to team_path(t.team.id)
+      redirect_to league_team_path(t.team.league.id, t.team.id)
     end
   end
 

@@ -22,11 +22,43 @@
 }
 
 .link-form{
-  width:45vw;
-  margin: 0 auto;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
 .submit_league{
-  background-color: $primary;
-  float:right;
-  margin-top:180px;
+  margin-top: 10px; 
+  align-items: flex-end;
+  $btn-color: $primary;
+  $btn-hover-color: #dd141c;
+  border-color: $btn-color;
+  background-color: $btn-color;
+  color: #484848;
+  overflow: hidden;
+  &::before,
+  &::after {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    background-color: $btn-hover-color;
+    transition: all 0.25s;
+    content: "";
+    z-index: 1;
+  }
+  &::before {
+    top: 0;
+    transform: translate(-100%, 0);
+  }
+  &::after {
+    bottom: 0;
+    transform: translate(100%, 0);
+  }
+  &:hover {
+    color: #fff;
+    &::before,
+    &::after {
+      transform: translate(0, 0);
+    }
+}
 }

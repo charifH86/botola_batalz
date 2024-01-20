@@ -4,13 +4,13 @@ Rails.application.routes.draw do
     member do
       get :start_league
     end
-    resources :teams, only: [:create, :new, :update]
+    resources :teams, only: [:create, :new, :update,:show]
     member do
       post 'update'
     end
     resources :games, only: :index
   end
-  resources :teams, only: [:show, :update, :delete]
+  resources :teams, only: [ :update, :delete]
   patch "/removefromteam/:id", to: "teams#remove_player"
 
 
