@@ -7,9 +7,9 @@
       <p>Find in the following list the players you need to win the <%=@team.league.name%> !</p>
     </div>
     <div data-controller="search" class="form-search">
-      <%= form_with url: team_path, method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
+      <%= form_with url: team_path(@team.league.id, @team.id), method: :get, html: {class:"mb-4", data: {search_target: "form"}} do |form| %>
         <%= form.text_field :first_name, value:params["first_name"], placeholder: "Type the player's name", data: {search_target: "name", action: "keyup->search#update"} %>
-        <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team",data: {search_target: "team", action: "keyup->search#update"} %>
+        <%= form.text_field :current_team, value:params["current_team"], placeholder: "Current team", data: {search_target: "team", action: "keyup->search#update"} %>
         <%= form.label :position, 'Position:' %>
         <select name="position" id="position" data-search-target= "position"  data-action="change->search#update">
           <% @unique_positions.prepend("Any").each do |p| %>
@@ -52,8 +52,8 @@
         <% end %>
         <h6> Your team is valuated at <%= number_to_currency(@team.valo, unit: '€', precision: 0) %> </h6>
       </div>
-      <form method="PATCH" action='<%="/leagues/#{@league.id}" %>'>
-                    <%if @team.team_players.count > 11%>
+                <form method="GET" action='<%="/leagues/#{@league.id}/teams/#{@team.id}" %>'>
+                  <%if @team.team_players.count > 11%>
                       <button type="button" class="btn btn-success btn-buy-player"
                         data-controller="sweetalert"
                         data-action="click->sweetalert#initSweetalert"
@@ -62,26 +62,28 @@
                         data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
                         data-sweetalert-confirm-button-text-value="OK"
                         data-sweetalert-show-cancel-button-value="true"
+                        data-sweetalert-send-form-value="true"
                         data-sweetalert-cancel-button-text-value="NO"
                         data-turbo="false"
                         >
                         Validate
                       </button>
-                    <%else%>
+                  <%else%>
                       <button type="button" class="btn btn-success btn-buy-player"
                         data-controller="sweetalert"
                         data-action="click->sweetalert#initSweetalert"
                         data-sweetalert-title-value="Your must have at least 11 players in your squad!"
                         data-sweetalert-icon-value="error"
                         data-sweetalert-html-value=""
-                        data-sweetalert-show-cancel-button-value="true"
-                        data-sweetalert-cancel-button-text-value="OK"
+                        data-sweetalert-show-cancel-button-value="false"
+                        data-sweetalert-send-form-value="false"
+                        data-sweetalert-confirm-button-text-value="OK"
                         data-turbo="false"
                         >
                         Validate
                       </button>
-                    <%end%>
-                  </form>
+                  <%end%>
+                    </form>
   </div>
 </div>
 </div>

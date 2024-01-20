@@ -4,6 +4,11 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @team_players_titulaire = @league.teams.where(user: current_user).first.team_players.where(titulaire: true)
     @team_players_subs= @league.teams.where(user: current_user).first.team_players.where(titulaire: false)
+   
+    if Game.all.where(league: @league).count==0
+      flash[:alert] = 'League has not started yet !'
+      redirect_to(league_team_path( @league.id,params[:team_id]), notice: 'League has started, and matchups have been scheduled!')
+    end 
   end
 
   def create
@@ -28,6 +33,17 @@ class LeaguesController < ApplicationController
   def startingsquad
     team_player_id = params[:team_player_id]
     t = TeamPlayer.find(team_player_id)
+  
+      if !t.titulaire
+        team = t.team
+        current_starters_count = team.team_players.where(titulaire: true).count
+        if current_starters_count >= 11
+          flash[:alert] = "Starting squad cannot have more than 11 players."
+          redirect_to league_path(params[:id])
+          return 
+        end
+      end
+
     titulaire = !t.titulaire
     t.update(titulaire: titulaire)
     redirect_to league_path(params[:id]) 

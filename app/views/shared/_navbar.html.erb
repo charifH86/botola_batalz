@@ -22,7 +22,7 @@
         <ul class="navbar-nav me-auto my-nav2">
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <%= image_tag "avatar", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mercato", "#", class: "dropdown-item" %>
@@ -30,12 +30,6 @@
             </div>
           </li>
         </ul>
-        <% else %>
-        <ul class="navbar3-nav me-auto">
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-          </ul>
         <% end %>
       </ul>
     </div>

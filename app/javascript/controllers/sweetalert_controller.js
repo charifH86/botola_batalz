@@ -12,6 +12,7 @@ export default class extends Controller {
     html: String,
     confirmButtonText: String,
     showCancelButton: Boolean,
+    sendForm: Boolean,
     cancelButtonText: String
   }
 
@@ -28,7 +29,8 @@ export default class extends Controller {
       cancelButtonText: this.cancelButtonTextValue,
       reverseButtons: true
     }).then((result) => {
-      if (result.isConfirmed) {
+      console.log("sendForm",this.sendFormValue);
+      if (result.isConfirmed && this.sendFormValue) {
         form.submit();
       }
     });

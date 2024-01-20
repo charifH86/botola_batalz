@@ -5,10 +5,12 @@
   <div class="left-container">
     <h1 >  PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT ALWAYS HAVE A FUN ! </h1>
     <div class="d-flex justify-content-around">
-
-      <a class="click-btn btn-style511 buttonlogin" href="<%= new_user_session_path%>"><span>Login</span></a>
-      <a class="click-btn btn-style511 buttonsingup" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
-
+  <% if user_signed_in? %>
+    <a class="click-btn btn-style511 buttonlogin" href="<%= new_league_path %>"><span>Start !</span></a>
+  <% else %> 
+    <a class="click-btn btn-style511 buttonlogin" href="<%= new_user_session_path%>"><span>Login</span></a>
+    <a class="click-btn btn-style511 buttonsingup" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
+   <% end%>
     </div>
   </div>
 
