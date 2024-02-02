@@ -49,6 +49,26 @@ class LeaguesController < ApplicationController
     redirect_to league_path(params[:id]) 
   end
 
+  def set_position
+    team_player = TeamPlayer.find(params[:team_player_id])
+    player_poste = team_player.player.poste
+
+    position = case player_poste
+               when "Goalkeeper"
+                 1
+               when "Defender"
+                 [2, 3, 4, 5].sample  
+               when "Mittelfield"
+                 [6, 8, 10].sample 
+               else
+                 [7, 9, 11].sample  
+               end
+
+    team_player.update(position: position)
+
+    redirect_to league_path(params[:id])
+  end
+
   def edit
   end
 
