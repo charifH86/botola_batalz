@@ -43,31 +43,31 @@ class LeaguesController < ApplicationController
           return 
         end
       end
-
+      if !t.titulaire
+        if ((TeamPlayer.where(team_id: t.team_id).pluck(:position)-["2","3","4","5","6","8","10","7","9","11"]).uniq-["0",nil]).size >= 1
+          flash[:alert] = "Starting squad must have 1 goalkeeper."
+          raise
+          redirect_to league_path(params[:id])
+          return
+        elsif ((TeamPlayer.where(team_id: t.team_id).pluck(:position)-["1","6","8","10","7","9","11"]).uniq-["0",nil]).size >= 4
+          flash[:alert] = "Starting squad must have 4 defenders."
+          redirect_to league_path(params[:id])
+          return
+        elsif ((TeamPlayer.where(team_id: t.team_id).pluck(:position)-["1","2","3","4","5","7","9","11"]).uniq-["0",nil]).size >= 3
+          flash[:alert] = "Starting squad must have 3 midfielders."
+          redirect_to league_path(params[:id])
+          return
+        elsif ((TeamPlayer.where(team_id: t.team_id).pluck(:position)-["1","2","3","4","5","6","8","10"]).uniq-["0",nil]).size >= 3
+          flash[:alert] = "Starting squad must have 3 strikers."
+          redirect_to league_path(params[:id])
+          return
+        end
+      end  
     titulaire = !t.titulaire
     t.update(titulaire: titulaire)
     redirect_to league_path(params[:id]) 
   end
 
-  def set_position
-    team_player = TeamPlayer.find(params[:team_player_id])
-    player_poste = team_player.player.poste
-
-    position = case player_poste
-               when "Goalkeeper"
-                 1
-               when "Defender"
-                 [2, 3, 4, 5].sample  
-               when "Mittelfield"
-                 [6, 8, 10].sample 
-               else
-                 [7, 9, 11].sample  
-               end
-
-    team_player.update(position: position)
-
-    redirect_to league_path(params[:id])
-  end
 
   def edit
   end
