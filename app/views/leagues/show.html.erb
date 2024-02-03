@@ -3,14 +3,17 @@
      <%= render "left"  %>
     <div class="right-container">
       <div class="score">
-        <div class = "teams">
-          <p> Next game: </p> 
-          <p> <%= Game.first.date%> </p>
+        <div class = "teamsdashboard">
+          <div>
+          <p> Next game: <%= Game.first.date%> </p>
+          </div>
+          <div class="gamespecifics">
           <%= image_tag "1.png" %>
           <p> <%= Team.find(@league.games.where(status: "pending").first.visitorteam_id).name %></p>
           <span> VS </span>
           <p> <%= Team.find(@league.games.where(status: "pending").first.localteam_id).name %></p>
           <%= image_tag "2.png" %>
+          </div>
         </div>
       </div>
       <div class= "tableau-ground">
