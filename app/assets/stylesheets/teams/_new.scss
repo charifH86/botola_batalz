@@ -4,30 +4,19 @@
   max-width: 800px;
   z-index: -1;
 }
-.cl{
-  width:100vw;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size:80px;
-  font-weight: 100px;
-  background-color: rgba(255, 255, 255, 0.836);
-  color: $secondary;
-  z-index: 3;
+
+
+#link-form2 form{
+  width: 70%;
   text-align: center;
-  flex :display;
-  margin-top: 115px;
-  h1 {
-    padding: 20px;
-  }
-  
+  margin: 0 auto;
+label {
+  display: none;
+}
 }
 
-.link-form{
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-}
 .submit_league{
-  margin-top: 10px; 
+  margin-top: 10px;
   align-items: flex-end;
   $btn-color: $primary;
   $btn-hover-color: #dd141c;

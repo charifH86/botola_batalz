@@ -1,5 +1,6 @@
 
 <%= image_tag "createT.png", class:"back-img"%>
+  <div class="d-none">
   <div class="cl">
     <h1>CREATE YOUR TEAM !</h1>
   </div>
@@ -11,4 +12,18 @@
     <%= f.submit "Build your team!",class:"submit_league" %>
   <% end %>
   </div>
-  
+</div>
+<div class= "newleaguecontainer">
+  <div class= "right">
+    <div class="cl">
+    <h1>CREATE YOUR TEAM !</h1>
+    </div>
+    <div id="link-form2">
+    <%= simple_form_for([@league,@team]) do |f| %>
+    <%= f.input :name,label: false, placeholder: "Type your team's name" %>
+    <%= f.input :"photo", as: :file %>
+    <%= f.submit "Build your team!",class:"submit_league" %>
+  <% end %>
+  </div>
+
+    </div>
