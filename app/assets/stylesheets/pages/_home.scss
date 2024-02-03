@@ -178,5 +178,30 @@ background-color:$tertiary ;
     }
   }
 }
+.how-does-it-works {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.hDW1 {
+  padding-top: 10;
+  margin: 0 10px; 
+}
+
+.hdwimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:12px;
+  width: 240px;
+  height: 240px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  img{
+width: 160px;
+height: 160px;
+}
+}
+
 }
 // **************************************************
