@@ -1,25 +1,58 @@
 
-
   <%= image_tag "createL.png", class:"back-img"%>
-  <div class= "leagues">
-    <ul class = "link_info">
+<div class="newleaguecontainer">
+  <div class="left">
+    <div class="cl">
+      <h1>CREATE YOUR LEAGUE !</h1>
+    </div>
+      <div class = "link-form">
+        <%= simple_form_for(@league) do |f| %>
+        <%= f.input :name,label: false, placeholder: "Type your league's name" %>
+        <%= f.submit "Create !",class:"click-btn btn-style511 buttonlogin" %>
+      <% end %>
+      </div>
+  </div>
+  <div class="right">
+    <div class="cl">
+      <h1>YOUR LEAGUES !</h1>
+    </div>
+    <div class="leagues">
       <% @leagues.each do |league| %>
-        <li>
-          <%= league.name %>
-          <%= link_to "Add Team",new_league_team_path(league),class: "mybtn" unless league.teams.where(user:current_user).first  %>
-          <%= league.teams.where(user:current_user).first.name if league.teams.where(user:current_user).first  %>
-          <%= link_to "Show team",league_team_path(league.id, league.teams.where(user:current_user).first.id),class: "mybtn"  if league.teams.where(user:current_user).first %>
-        </li>
-      <% end %>  
-    </ul>
+          <div class="league">
+            <%= league.name %>
+            <%= link_to "Add Team",new_league_team_path(league),class: "mybtn" unless league.teams.where(user:current_user).first  %>
+            <%= league.teams.where(user:current_user).first.name if league.teams.where(user:current_user).first  %>
+            <%= link_to "Show team",league_team_path(league.id, league.teams.where(user:current_user).first.id),class: "mybtn"  if league.teams.where(user:current_user).first %>
+          </div>
+      <% end %>
+    </div>
 
   </div>
-  <div class="cl">
-    <h1>CREATE YOUR LEAGUE !</h1>
-  </div>
-  <div class = "link-form">
-    <%= simple_form_for(@league) do |f| %>
-    <%= f.input :name,label: false, placeholder: "Type your league's name" %>
-    <%= f.submit "Create !",class:"submit_league" %>
-  <% end %>
+</div>
+
+
+  <div class="d-none">
+    <div class= "leagues ">
+        <ul class = "link_info">
+          <% @leagues.each do |league| %>
+            <li>
+              <%= league.name %>
+              <%= link_to "Add Team",new_league_team_path(league),class: "mybtn" unless league.teams.where(user:current_user).first  %>
+              <%= league.teams.where(user:current_user).first.name if league.teams.where(user:current_user).first  %>
+              <%= link_to "Show team",league_team_path(league.id, league.teams.where(user:current_user).first.id),class: "mybtn"  if league.teams.where(user:current_user).first %>
+            </li>
+          <% end %>
+        </ul>
+
+      </div>
+      <div class="cl">
+        <h1>CREATE YOUR LEAGUE !</h1>
+      </div>
+      <div class = "link-form">
+        <%= simple_form_for(@league) do |f| %>
+        <%= f.input :name,label: false, placeholder: "Type your league's name" %>
+        <%= f.submit "Create !",class:"submit_league" %>
+      <% end %>
+      </div>
+
   </div>
