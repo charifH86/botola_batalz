@@ -178,5 +178,20 @@ background-color:$tertiary ;
     }
   }
 }
+.how-does-it-works {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.hDW1 {
+  padding-top: 10;
+  margin: 0 10px; 
+}
+
+.hdwimg {
+border-radius: 50%;
+zoom: 0.7;
+}
+
 }
 // **************************************************

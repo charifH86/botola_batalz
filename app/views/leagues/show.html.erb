@@ -4,6 +4,8 @@
     <div class="right-container">
       <div class="score">
         <div class = "teams">
+          <p> Next game: </p> 
+          <p> <%= Game.first.date%> </p>
           <%= image_tag "1.png" %>
           <p> <%= Team.find(@league.games.where(status: "pending").first.visitorteam_id).name %></p>
           <span> VS </span>
