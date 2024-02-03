@@ -59,7 +59,7 @@
             <div id= "<%= team_player.player.id %>">
             
             <form action= "/startingsquad/<%=@league.id%>/<%= team_player.id %>" method="POST">
-            <input class="starter" type="submit" value="<%= index+1 %>-<%= team_player.player.first_name.split.last %>"> 
+            <input class="starter" type="submit" value="<%= team_player.position %>-<%= team_player.player.first_name.split.last %>"> 
             </form>
             </div>
           <% end %>

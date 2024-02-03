@@ -1,5 +1,5 @@
 <div class="left-container" data-controller="calendar">
-    <h1>Welcome to your dashboard !</h1>
+    <h1>HI COACH <%= current_user.email.capitalize%> !</h1>
         <a class= "btn first"   href="">The Starting squad</a>
         <a class= "btn first"   href="">The Bench</a>
         <a class= "btn first" href="#" >My Budget <p> &nbsp; - &nbsp; &nbsp;  <%= current_user.teams.where(league: @league).first.budget %> </p> </a>
