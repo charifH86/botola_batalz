@@ -49,7 +49,7 @@
       <div class="shopdetails">
         <% @team.team_players.each do |t_player| %>
         <br/>
-        <%= t_player.player.first_name.split.last%>
+        <%= "#{t_player.player.first_name.split.last} - #{t_player.player.poste}" %>
         <form method="PATCH" action='<%="/removefromteam/#{t_player.id}?" %>'>
                     <button type="submit" class="btn btn-danger">
                       Delete
@@ -65,7 +65,7 @@
                         data-action="click->sweetalert#initSweetalert"
                         data-sweetalert-title-value="Your team is ready !"
                         data-sweetalert-icon-value="question"
-                        data-sweetalert-html-value="Can you confirm the selected players and start the competition ?"
+                        data-sweetalert-html-value= "" 
                         data-sweetalert-confirm-button-text-value="OK"
                         data-sweetalert-show-cancel-button-value="true"
                         data-sweetalert-send-form-value="true"
@@ -92,4 +92,14 @@
                     </form>
   </div>
 </div>
+</div>
+<div style="display:none;" id="content"> 
+  Can you confirm the selected players and start the competition ? 
+  <br>
+  partagez le lien avec vos amis:
+  <br>
+  <div data-controller='clipboard' data-clipboard-success-content-value='Copied!'>
+    <input type='text' value='<%= "#{request.base_url}/leagues/#{@league.id}/teams/new" %>' data-clipboard-target='source' />
+    <button type='button' data-action='clipboard#copy' data-clipboard-target='button'>Share !</button>
+  </div>
 </div>

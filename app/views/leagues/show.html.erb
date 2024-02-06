@@ -64,7 +64,7 @@
             <div id= "<%= team_player.player.id %>">
             
             <form action= "/startingsquad/<%=@league.id%>/<%= team_player.id %>" method="POST">
-            <input class="starter" type="submit" value="<%= team_player.position %>-<%= team_player.player.first_name.split.last %>"> 
+            <input class="starter" type="submit" value="<%= "#{team_player.position}-#{team_player.player.first_name.split.last}-#{team_player.player.short_position}" %>"> 
             </form>
             </div>
           <% end %>
@@ -74,7 +74,7 @@
           <% @team_players_subs.each do |team_player|%>
             <div id= "<%= team_player.player.id %>">
             <form action= "/startingsquad/<%=@league.id%>/<%= team_player.id %>" method="POST">
-            <input class="subs" type="submit" value="<%= team_player.player.first_name.split.last %>"> 
+            <input class="subs" type="submit" value="<%=" #{team_player.player.first_name.split.last} - #{team_player.player.short_position} " %>"> 
             </form>
             </div>
           <% end %>

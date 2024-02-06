@@ -23,7 +23,7 @@ export default class extends Controller {
     Swal.fire({
       icon: this.iconValue,
       title: this.titleValue,
-      html: this.htmlValue,
+      html: this.htmlValue == "" ? document.getElementById("content").innerHTML : this.htmlValue,
       confirmButtonText: this.confirmButtonTextValue,
       showCancelButton: this.showCancelButtonValue,
       cancelButtonText: this.cancelButtonTextValue,
