@@ -18,7 +18,6 @@ class GamesController < ApplicationController
   #       player.save!
   #       player.new_goal = stats["stats"][0]["goals"]
   #       player.save!
-  
   #     end
   #     team_player = TeamPlayer.where(player: player,team: team).first
   #     team_player.score = player.new_goal.to_i - player.past_goal.to_i
