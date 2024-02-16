@@ -1,5 +1,5 @@
 <div class="left-container" data-controller="calendar">
-    <h1 style = "color: white;" > HI COACH <%= current_user.email.capitalize%> !</h1>
+    <h1 style = "color: white;" > HI COACH <%= current_user.email.split('@').first.sub(/\b('?[a-z])/) { $1.capitalize } %> !</h1>
         <a class= "btn first" href="#" >My Budget <p> &nbsp; : &nbsp; &nbsp;  <%= number_to_currency(current_user.teams.where(league: @league).first.budget, unit: '€', precision: 0) %> </p> </a>
       
     <input id="flatpickr" data-controller="flatpickr" data-flatpickr-inline="true" value="<%= Date.today %>" style="height:42px;width:110px;display:none;">
@@ -7,4 +7,4 @@
   <hr />
     <p style = "color: white;" ><strong>Copyright &copy; 2024 Botola Batalz</strong></p>
   </footer>
-    </div>
+</div>

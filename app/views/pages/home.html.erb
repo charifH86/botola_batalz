@@ -3,7 +3,7 @@
     <%=image_tag'image2.png',class:'floating-img'%>
 
   <div class="left-container">
-    <h1 >  PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT ALWAYS HAVE A FUN ! </h1>
+    <h1>PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT <span class="flashing-text">ALWAYS HAVE A FUN</span> !</h1>
     <div class="d-flex justify-content-around">
   <% if user_signed_in? %>
     <a class="click-btn btn-style511 buttonlogin" href="<%= new_league_path %>"><span>Start !</span></a>

@@ -1,9 +1,23 @@
 
 #home-page  {
+ 
 .main-container{
   display:flex ;
   width: 100%;
   background-color: black;
+  
+  @keyframes flashText {
+    0%, 100% {
+      color: green;
+    }
+    50% {
+      color: white;
+    }
+  }
+
+  .flashing-text {
+    animation: flashText 1s infinite;
+  }
 
 
 }
