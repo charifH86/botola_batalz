@@ -1,43 +1,39 @@
 <div id="home-page">
   <div class="main-container">
-    <%=image_tag'image2.png',class:'floating-img'%>
+    <div class="left-container">
+      <h1>PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT <span class="flashing-text">ALWAYS HAVE FUN!</span></h1>
+      <div class="button-group">
+        <% if user_signed_in? %>
+          <a class="btn btn-primary" href="<%= new_league_path %>">Start!</a>
+        <% else %> 
+          <a class="btn btn-secondary" href="<%= new_user_session_path %>">Login</a>
+          <a class="btn btn-secondary" href="<%= new_user_registration_path %>">Sign Up</a>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="left-container">
-    <h1>PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT <span class="flashing-text">ALWAYS HAVE A FUN !</span></h1>
-    <div class="d-flex justify-content-around">
-  <% if user_signed_in? %>
-    <a class="click-btn btn-style511 buttonlogin" href="<%= new_league_path %>"><span>Start !</span></a>
-  <% else %> 
-    <a class="click-btn btn-style511 buttonlogin" href="<%= new_user_session_path%>"><span>Login</span></a>
-    <a class="click-btn btn-style511 buttonsingup" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
-   <% end%>
+    <div class="right-container">
+      <div class="image-player" style='background-image: url(<%= image_path "footballcoach.png" %>)'></div>
     </div>
   </div>
 
-  <div class="right-container">
-    <div class= 'image-player' style='background-image: url(<%=image_path "image1.png"%>)' >
-    </div>
-  </div>
-</div>
-
-  <div class='bas'>
-    <div class="how-does-it-works">
-      <div class="hDW1">
-        <span class= hdwimg> <%=image_tag'Joinaleague.png' %> </span>
-        <h2 style="color: white;" id="Join a league"> Join a league </h2>
+  <div class="bas">
+    <div class="how-it-works">
+      <div class="step">
+        <span class="step-image"><%= image_tag 'Joinaleague.png' %></span>
+        <h1>Join a League</h1>
       </div>
-      <div class="hDW1">
-        <span class= hdwimg> <%=image_tag'buildteam.png'%> </span>
-        <h2 style="color: white;" id="Build your team"> Build your team </h2>
+      <div class="step">
+        <span class="step-image"><%= image_tag 'buildteam.png' %></span>
+        <h1>Build Your Team</h1>
       </div>
-      <div class="hDW1">
-        <span class= hdwimg> <%=image_tag'competewithyourfriends.png'%> </span>
-        <h2 style="color: white;" id="challenge your friends"> Challenge your friends !</h2>
+      <div class="step">
+        <span class="step-image"><%= image_tag 'competewithyourfriends.png' %></span>
+        <h1>Challenge Your Friends!</h1>
       </div>
     </div>
     <div class="features">
-      <div class= 'stadium' style='background-image: url(<%=image_path "stadium"%>)' >
-      </div>
+      <div class="stadium" style='background-image: url(<%= image_path "stadium.jpg" %>)'></div>
     </div>
   </div>
 </div>
