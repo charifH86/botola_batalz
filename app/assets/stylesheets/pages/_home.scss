@@ -1,211 +1,98 @@
-
-#home-page  {
- 
-.main-container{
-  display:flex;
-  width: 100%;
-  background-color: black;
-  
-  @keyframes flashText {
-    0%, 100% {
-      color: green;
-    }
-    50% {
-      color: white;
-    }
-  }
-
-  .flashing-text {
-    animation: flashText 1s infinite;
-  }
-
-
+#home-page {
+  font-family: 'Arial, sans-serif';
+  background-color: white;
 }
 
-.left-container{
-  color: rgb(255, 255, 255);
-  background-color: black;
-  width: 67%;
-  height:70vh;
-  display:flex;
-  justify-content: space-between;
-  align-items:flex-end;
-  flex-direction: column;
-
-  h1{
-  margin-top: 20px;
-  font-size: 60px ;
-  margin-left: 10px;
-  margin-bottom:10%;
-  font-weight: 900;
-  margin-left: 20px;
-  }
-}
-.floating-img{
-  z-index: 3;
-  margin-top: 10px;
-  width: 150PX;
-  position: absolute;
-  top: 21%;
-  left: 55%;
-}
-.floating-img2{
-  z-index: 3;
-  margin-top: 10px;
-  width: 240px;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-}
-.buttonsingup{
-
-    color: #FFF;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-decoration: none;
-    margin-left:10px;
-    margin-right:10px;
-
-  }
-.buttonlogin{
-
-
-  color: #FFF;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  text-decoration: none;
-
-  margin-left:25% ;
-  margin-right: 10px;
-}
-.justify-content-around {
-  justify-content: space-around !important;
-  margin-top: -100px;
-  margin-right: 195px;
-    margin-bottom: 195px;
-    margin-left: 195px;
-}
-
-
-.right-container{
-  display:flex;
-  flex-direction: column;
-  width: 50%;
-  height: 70vh;
-  box-shadow: 8%;
-  margin-left: 8%;
-.image-player{
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-}
-
-.click-btn {
-  width: 120px;
-  height: 40px;
-  justify-content: center;
+.main-container {
+  display: flex;
   align-items: center;
-  margin: 0.5rem;
-  line-height: 35px;
-  border: 1px solid;
-  border-radius: $border-radius;
-  text-align: center;
-  font-size: 18px;
-  color: #000;
-  text-decoration: none;
-  transition: all 0.35s;
-  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f0f0;
 }
 
-.btn-style511 {
-  $btn-color: $primary;
-  $btn-hover-color: #dd141c;
-  position: relative;
-  border-color: $btn-color;
-  background-color: $btn-color;
-  color: #484848;
+.left-container {
+  max-width: 50%;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.flashing-text {
+  color: #ff4500;
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.button-group .btn {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.right-container {
   overflow: hidden;
-  span {
-    position: relative;
-    z-index: 2;
-  }
-  &::before,
-  &::after {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    left: 0;
-    background-color: $btn-hover-color;
-    transition: all 0.25s;
-    content: "";
-    z-index: 1;
-  }
-  &::before {
-    top: 0;
-    transform: translate(-100%, 0);
-  }
-  &::after {
-    bottom: 0;
-    transform: translate(100%, 0);
-  }
-  &:hover {
-    color: #fff;
-    &::before,
-    &::after {
-      transform: translate(0, 0);
-    }
-  }
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.image-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .bas {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  color: black;
+}
+
+.how-it-works {
   display: flex;
-  flex-direction: row;
-  background-color: black;
-  color: white;
-  padding: 50px 0; // Add some padding to the top and bottom
-  text-align: center; // Center-align the text if suitable
-
-.how-does-it-works {
-  justify-content: center; // Adjust based on your layout preference
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-.hDW1 {
-  margin: 20px; // Adds spacing around each item
-  display: flex;
-  flex-direction: column;
-  align-items: left; // Centers the content
-  
-  h2 {
-    font-size: 1.5rem; // Adjust based on your preference
-    margin-top: 20px; // Adds space between the image and the text
-    color: #fff;
-  }
+.step {
+  text-align: center;
 }
 
-.hdwimg {
-  background-color: #202020; // Slightly lighter than the background for depth
-  border: 2px solid #fff; // Adds a border for more definition
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5); // Adds a shadow for a 3D effect
-}
-
-.features {
-  float: right;
-}
-.stadium {
-  width: 800px;
-  height: 580px;
-  z-index: 3;
+.step h2 {
   margin-top: 10px;
-  position: absolute;
-  top: 85%;
-  left: 50%;
+  font-size: 1.2rem;
 }
+
+.features .stadium {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
 }
-}
-// **************************************************
