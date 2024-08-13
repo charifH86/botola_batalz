@@ -1,8 +1,14 @@
 
 #home-page  {
- 
+  height: 100vh; // Assure que #home-page prend toute la hauteur de la fenêtre
+  background-image: asset-url('soccer-fans-cheering-team-monochrome.jpg'); // Utilisez asset-url pour intégrer des images avec Rails
+  background-size: cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
 .main-container{
-  display:flex;
+  display:contents;
   width: 100%;
   background-color: black;
   
@@ -24,7 +30,7 @@
 
 .left-container{
   color: rgb(255, 255, 255);
-  background-color: black;
+  background-color: transparent;
   width: 67%;
   height:70vh;
   display:flex;
@@ -171,10 +177,6 @@
   padding: 50px 0; // Add some padding to the top and bottom
   text-align: center; // Center-align the text if suitable
 
-.how-does-it-works {
-  justify-content: center; // Adjust based on your layout preference
-}
-
 .hDW1 {
   margin: 20px; // Adds spacing around each item
   display: flex;
@@ -188,23 +190,12 @@
   }
 }
 
-.hdwimg {
-  background-color: #202020; // Slightly lighter than the background for depth
-  border: 2px solid #fff; // Adds a border for more definition
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5); // Adds a shadow for a 3D effect
-}
-
-.features {
-  float: right;
-}
 .stadium {
-  width: 800px;
+  width: 2400px;
   height: 580px;
   z-index: 3;
   margin-top: 10px;
-  position: absolute;
-  top: 85%;
-  left: 50%;
+  position:relative;
 }
 }
 }
