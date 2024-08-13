@@ -117,59 +117,76 @@
   height: 40px;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
-  line-height: 35px;
-  border: 1px solid;
-  border-radius: $border-radius;
-  text-align: center;
-  font-size: 18px;
-  color: #000;
-  text-decoration: none;
-  transition: all 0.35s;
-  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f0f0;
 }
 
-.btn-style511 {
-  $btn-color: $primary;
-  $btn-hover-color: #dd141c;
-  position: relative;
-  border-color: $btn-color;
-  background-color: $btn-color;
-  color: #484848;
+.left-container {
+  max-width: 50%;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.flashing-text {
+  color: #ff4500;
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.button-group .btn {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.right-container {
   overflow: hidden;
-  span {
-    position: relative;
-    z-index: 2;
-  }
-  &::before,
-  &::after {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    left: 0;
-    background-color: $btn-hover-color;
-    transition: all 0.25s;
-    content: "";
-    z-index: 1;
-  }
-  &::before {
-    top: 0;
-    transform: translate(-100%, 0);
-  }
-  &::after {
-    bottom: 0;
-    transform: translate(100%, 0);
-  }
-  &:hover {
-    color: #fff;
-    &::before,
-    &::after {
-      transform: translate(0, 0);
-    }
-  }
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.image-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .bas {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  color: black;
+}
+
+.how-it-works {
   display: flex;
   flex-direction: row;
   background-color: black;
@@ -197,6 +214,12 @@
   margin-top: 10px;
   position:relative;
 }
+
+.features .stadium {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
 }
 }
-// **************************************************
+}
