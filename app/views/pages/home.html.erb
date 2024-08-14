@@ -1,23 +1,16 @@
 <div id="home-page">
   <div class="main-container">
-      <div class="main-container">
     <%=image_tag'image2.png',class:'floating-img'%>
-  <div class="left-container">
-    <h1>PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT <span class="flashing-text">ALWAYS HAVE A FUN !</span></h1>
-    <div class="d-flex justify-content-around">
-  <% if user_signed_in? %>
-    <a class="click-btn btn-style511 buttonlogin" href="<%= new_league_path %>"><span>Start !</span></a>
-  <% else %> 
-    <a class="click-btn btn-style511 buttonlogin" href="<%= new_user_session_path%>"><span>Login</span></a>
-    <a class="click-btn btn-style511 buttonsingup" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
-   <% end%>
-    </div>
-  </div>
-</div>
-
-  <div class='bas'>
-      <div class= 'stadium' style='background-image: url(<%=image_path "stadium"%>)' >
+      <div class="left-container">
+        <h1>PLAY WITH YOUR FRIENDS,<br>WIN OR LOSE BUT <span class="flashing-text">ALWAYS HAVE A FUN !</span></h1>
+        <div class="d-flex justify-content-around">
+      <% if user_signed_in? %>
+        <a class="btn-primary" href="<%= new_league_path %>"><span>Start !</span></a>
+      <% else %> 
+        <a class="buttonlp" href="<%= new_user_session_path%>"><span>Login</span></a>
+        <a class="buttonlp" href="<%= new_user_registration_path%>"><span>Sign up</span></a>
+      <% end%>
+        </div>
       </div>
   </div>
-</div>
 </div>
